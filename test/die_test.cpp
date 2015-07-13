@@ -8,6 +8,7 @@
 #include "../src/die/land_attack_die_fight.h"
 #include "../src/die/land_attack_attack_die.h"
 #include "../src/die/land_attack_defense_die.h"
+#include "../src/die/land_attack_dice_fight.h"
 
 TEST_CASE( "face 1" )
 {
@@ -135,3 +136,40 @@ TEST_CASE( "die land fight defense wins" )
 	REQUIRE( fight.result() == risk::die::land_attack_die_fight_result::DEFENSE );
 
 }
+
+TEST_CASE( "dice fight 3x2" )
+{
+	risk::die::land_attack_attack_die attack;
+	risk::die::land_attack_defense_die defense;
+	risk::die::land_attack_dice_fight fight{attack, 3, defense, 2};
+	int count = fight.attacks() + fight.defenses();
+	REQUIRE( count == 2 );
+}
+
+TEST_CASE( "dice fight 1x1" )
+{
+	risk::die::land_attack_attack_die attack;
+	risk::die::land_attack_defense_die defense;
+	risk::die::land_attack_dice_fight fight{attack, 1, defense, 1};
+	int count = fight.attacks() + fight.defenses();
+	REQUIRE( count == 1 );
+}
+
+TEST_CASE( "dice fight 1x2" )
+{
+	risk::die::land_attack_attack_die attack;
+	risk::die::land_attack_defense_die defense;
+	risk::die::land_attack_dice_fight fight{attack, 1, defense, 2};
+	int count = fight.attacks() + fight.defenses();
+	REQUIRE( count == 1 );
+}
+
+TEST_CASE( "dice fight 3x3" )
+{
+	risk::die::land_attack_attack_die attack;
+	risk::die::land_attack_defense_die defense;
+	risk::die::land_attack_dice_fight fight{attack, 3, defense, 3};
+	int count = fight.attacks() + fight.defenses();
+	REQUIRE( count == 3 );
+}
+

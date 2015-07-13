@@ -21,7 +21,8 @@ libriskdie_a_HEADERS =	\
 						simple_die.h \
 						land_attack_attack_die.h \
 						land_attack_defense_die.h \
-						land_attack_die_fight.h
+						land_attack_die_fight.h \
+						land_attack_dice_fight.h
 
 # the sources to add to the library and to add to the source distribution
 libriskdie_a_SOURCES =	\
@@ -32,6 +33,7 @@ libriskdie_a_SOURCES =	\
 						land_defense_die_face.cpp \
 						land_attack_attack_die.cpp \
 						land_attack_defense_die.cpp \
-						land_attack_die_fight.cpp
+						land_attack_die_fight.cpp \
+						land_attack_dice_fight.cpp
 						
 ###############################################################################

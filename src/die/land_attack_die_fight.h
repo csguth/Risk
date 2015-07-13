@@ -22,8 +22,8 @@ enum class land_attack_die_fight_result {
 };
 
 class land_attack_die_fight {
-	const land_attack_die_face attack_;
-	const land_defense_die_face defense_;
+	land_attack_die_face attack_;
+	land_defense_die_face defense_;
 	land_attack_die_fight_result result_;
 
 public:

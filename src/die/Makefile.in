@@ -133,7 +133,8 @@ am_libriskdie_a_OBJECTS = $(am__objects_1) die_random_engine.$(OBJEXT) \
 	land_defense_die_face.$(OBJEXT) \
 	land_attack_attack_die.$(OBJEXT) \
 	land_attack_defense_die.$(OBJEXT) \
-	land_attack_die_fight.$(OBJEXT)
+	land_attack_die_fight.$(OBJEXT) \
+	land_attack_dice_fight.$(OBJEXT)
 libriskdie_a_OBJECTS = $(am_libriskdie_a_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -327,7 +328,8 @@ libriskdie_a_HEADERS = \
 						simple_die.h \
 						land_attack_attack_die.h \
 						land_attack_defense_die.h \
-						land_attack_die_fight.h
+						land_attack_die_fight.h \
+						land_attack_dice_fight.h
 
 
 # the sources to add to the library and to add to the source distribution
@@ -339,7 +341,8 @@ libriskdie_a_SOURCES = \
 						land_defense_die_face.cpp \
 						land_attack_attack_die.cpp \
 						land_attack_defense_die.cpp \
-						land_attack_die_fight.cpp
+						land_attack_die_fight.cpp \
+						land_attack_dice_fight.cpp
 
 all: all-am
 
@@ -422,6 +425,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/die_random_engine.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/land_attack_attack_die.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/land_attack_defense_die.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/land_attack_dice_fight.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/land_attack_die_face.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/land_attack_die_fight.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/land_defense_die_face.Po@am__quote@
