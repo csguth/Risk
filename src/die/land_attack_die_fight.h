@@ -22,12 +22,12 @@ enum class land_attack_die_fight_result {
 };
 
 class land_attack_die_fight {
-	land_attack_die_face attack_;
-	land_defense_die_face defense_;
+	const land_attack_die_face attack_;
+	const land_defense_die_face defense_;
 	land_attack_die_fight_result result_;
 
 public:
-	land_attack_die_fight(land_attack_attack_die & attacker, land_attack_defense_die & defenser);
+	land_attack_die_fight(land_attack_die_face attack, land_defense_die_face defense);
 	virtual ~land_attack_die_fight();
 
 	inline const land_attack_die_face & attack() const { return attack_; }

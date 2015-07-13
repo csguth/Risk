@@ -10,14 +10,10 @@
 namespace risk {
 namespace die {
 
-land_attack_die_fight::land_attack_die_fight(
-		land_attack_attack_die& attacker,
-		land_attack_defense_die& defenser) :
-	attack_(attacker.roll()),
-	defense_(defenser.roll())
+land_attack_die_fight::land_attack_die_fight(land_attack_die_face attack, land_defense_die_face defense) :
+	attack_(attack),
+	defense_(defense)
 {
-	std::cout << "attack " << attack_.value() << std::endl;
-	std::cout << "defense " << defense_.value() << std::endl;
 	result_ = land_attack_die_fight_result::ATTACK;
 	if(defense_.wins(attack_))
 		result_ = land_attack_die_fight_result::DEFENSE;

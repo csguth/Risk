@@ -128,8 +128,9 @@ am__v_AR_1 =
 libriskdie_a_AR = $(AR) $(ARFLAGS)
 libriskdie_a_LIBADD =
 am__objects_1 =
-am_libriskdie_a_OBJECTS = $(am__objects_1) die_face.$(OBJEXT) \
-	land_attack_die_face.$(OBJEXT) land_defense_die_face.$(OBJEXT) \
+am_libriskdie_a_OBJECTS = $(am__objects_1) die_random_engine.$(OBJEXT) \
+	die_face.$(OBJEXT) land_attack_die_face.$(OBJEXT) \
+	land_defense_die_face.$(OBJEXT) \
 	land_attack_attack_die.$(OBJEXT) \
 	land_attack_defense_die.$(OBJEXT) \
 	land_attack_die_fight.$(OBJEXT)
@@ -318,11 +319,12 @@ libriskdie_adir = $(includedir)/libriskdie
 
 # the list of header files that belong to the library (to be installed later)
 libriskdie_a_HEADERS = \
+						die_random_engine.h \
 						die_face.h \
 						die.h \
 						land_attack_die_face.h \
 						land_defense_die_face.h \
-						six_faces_die.h \
+						simple_die.h \
 						land_attack_attack_die.h \
 						land_attack_defense_die.h \
 						land_attack_die_fight.h
@@ -331,6 +333,7 @@ libriskdie_a_HEADERS = \
 # the sources to add to the library and to add to the source distribution
 libriskdie_a_SOURCES = \
 						$(libriskdie_a_HEADERS) \
+						die_random_engine.cpp \
 						die_face.cpp \
 						land_attack_die_face.cpp \
 						land_defense_die_face.cpp \
@@ -416,6 +419,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/die_face.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/die_random_engine.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/land_attack_attack_die.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/land_attack_defense_die.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/land_attack_die_face.Po@am__quote@

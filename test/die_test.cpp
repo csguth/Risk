@@ -4,7 +4,7 @@
 #include "../src/die/die_face.h"
 #include "../src/die/land_defense_die_face.h"
 #include "../src/die/land_attack_die_face.h"
-#include "../src/die/six_faces_die.h"
+#include "../src/die/simple_die.h"
 #include "../src/die/land_attack_die_fight.h"
 #include "../src/die/land_attack_attack_die.h"
 #include "../src/die/land_attack_defense_die.h"
@@ -108,7 +108,7 @@ TEST_CASE( "roll d6" )
 {
 
 	const std::vector<risk::die::die_face> faces{1, 2, 3, 4, 5, 6};
-	risk::die::six_faces_die<risk::die::die_face> d6{faces};
+	risk::die::simple_die<risk::die::die_face> d6{faces};
 	const risk::die::die_face face = d6.roll();
 	REQUIRE( face >=  faces.front() );
 	REQUIRE( !(face < faces.front()) );
@@ -119,37 +119,19 @@ TEST_CASE( "roll d6" )
 TEST_CASE( "die land fight attack wins" )
 {
 
-	risk::die::land_attack_attack_die attack_die;
-	risk::die::land_attack_defense_die defense_die;
-	bool attack_wins = false;
-	while(!attack_wins)
-	{
-		risk::die::land_attack_die_fight fight(attack_die, defense_die);
-		const risk::die::land_attack_die_face & attack_die_face = fight.attack();
-		const risk::die::land_defense_die_face & defense_die_face = fight.defense();
-		if(attack_die_face.wins(defense_die_face))
-		{
-			REQUIRE( fight.result() ==  risk::die::land_attack_die_fight_result::ATTACK );
-			attack_wins = true;
-		}
-	}
+	risk::die::land_defense_die_face defense{2};
+	risk::die::land_attack_die_face attack{3};
+	risk::die::land_attack_die_fight fight{attack, defense};
+	REQUIRE( fight.result() == risk::die::land_attack_die_fight_result::ATTACK );
 
 }
 
 TEST_CASE( "die land fight defense wins" )
 {
-	risk::die::land_attack_attack_die attack_die;
-	risk::die::land_attack_defense_die defense_die;
-	bool defense_wins = false;
-	while(!defense_wins)
-	{
-		risk::die::land_attack_die_fight fight(attack_die, defense_die);
-		const risk::die::land_attack_die_face & attack_die_face = fight.attack();
-		const risk::die::land_defense_die_face & defense_die_face = fight.defense();
-		if(defense_die_face.wins(attack_die_face))
-		{
-			REQUIRE( fight.result() ==  risk::die::land_attack_die_fight_result::DEFENSE );
-			defense_wins = true;
-		}
-	}
+
+	risk::die::land_defense_die_face defense{3};
+	risk::die::land_attack_die_face attack{3};
+	risk::die::land_attack_die_fight fight{attack, defense};
+	REQUIRE( fight.result() == risk::die::land_attack_die_fight_result::DEFENSE );
+
 }

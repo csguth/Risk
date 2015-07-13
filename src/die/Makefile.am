@@ -13,11 +13,12 @@ libriskdie_adir = $(includedir)/libriskdie
 
 # the list of header files that belong to the library (to be installed later)
 libriskdie_a_HEADERS =	\
+						die_random_engine.h \
 						die_face.h \
 						die.h \
 						land_attack_die_face.h \
 						land_defense_die_face.h \
-						six_faces_die.h \
+						simple_die.h \
 						land_attack_attack_die.h \
 						land_attack_defense_die.h \
 						land_attack_die_fight.h
@@ -25,6 +26,7 @@ libriskdie_a_HEADERS =	\
 # the sources to add to the library and to add to the source distribution
 libriskdie_a_SOURCES =	\
 						$(libriskdie_a_HEADERS) \
+						die_random_engine.cpp \
 						die_face.cpp \
 						land_attack_die_face.cpp \
 						land_defense_die_face.cpp \
