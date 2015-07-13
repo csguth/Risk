@@ -12,8 +12,20 @@
 #include "land_attack_defense_die.h"
 #include "land_attack_die_fight.h"
 
+#include <algorithm>
+
 namespace risk {
 namespace die {
+
+struct defense_wins
+{
+	bool operator()(const land_attack_die_fight & a);
+};
+
+struct attack_wins
+{
+	bool operator()(const land_attack_die_fight & a);
+};
 
 class land_attack_dice_fight {
 	std::vector<land_attack_die_fight> fights_;
