@@ -1,5 +1,6 @@
 #include <catch/catch.hpp>
 #include "../src/map/map.h"
+#include "../src/map/earth.h"
 #include "../src/map/continent.h"
 #include <exception>
 
@@ -56,20 +57,14 @@ TEST_CASE( "doesn't find continent by name", "[map][continent]" )
 
 TEST_CASE( "earth with 6 continents", "[map][continent]" )
 {
-	risk::map::map map{"Earth"};
-	map.add_continent(risk::map::continent{"North America"});
-	map.add_continent(risk::map::continent{"South America"});
-	map.add_continent(risk::map::continent{"Europe"});
-	map.add_continent(risk::map::continent{"Africa"});
-	map.add_continent(risk::map::continent{"Asia"});
-	map.add_continent(risk::map::continent{"Oceania"});
+	const std::unique_ptr<risk::map::map> & earth = risk::map::earth::instance();
 
-	REQUIRE( map.num_continents() == 6 );
-	REQUIRE_NOTHROW( map.find_continent("North America") );
-	REQUIRE_NOTHROW( map.find_continent("South America") );
-	REQUIRE_NOTHROW( map.find_continent("Europe") );
-	REQUIRE_NOTHROW( map.find_continent("Africa") );
-	REQUIRE_NOTHROW( map.find_continent("Oceania") );
-
+	REQUIRE( earth->num_continents() == 6 );
+	REQUIRE_NOTHROW( earth->find_continent("North America") );
+	REQUIRE_NOTHROW( earth->find_continent("South America") );
+	REQUIRE_NOTHROW( earth->find_continent("Europe") );
+	REQUIRE_NOTHROW( earth->find_continent("Africa") );
+	REQUIRE_NOTHROW( earth->find_continent("Oceania") );
+	REQUIRE_THROWS_AS( earth->find_continent("Antarctica"), std::out_of_range );
 
 }

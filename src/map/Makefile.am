@@ -14,12 +14,14 @@ libriskmap_adir = $(includedir)/libriskmap
 # the list of header files that belong to the library (to be installed later)
 libriskmap_a_HEADERS =	\
 						continent.h \
-						map.h
+						map.h \
+						earth.h
 
 # the sources to add to the library and to add to the source distribution
 libriskmap_a_SOURCES =	\
 						$(libriskmap_a_HEADERS) \
 						continent.cpp \
-						map.cpp
+						map.cpp \
+						earth.cpp
 						
 ###############################################################################
