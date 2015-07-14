@@ -2,6 +2,8 @@
 #include "../src/map/map.h"
 #include "../src/map/earth.h"
 #include "../src/map/continent.h"
+#include "../src/map/south_america.h"
+#include "../src/map/territory.h"
 #include <exception>
 
 TEST_CASE( "map name", "[map]" )
@@ -67,4 +69,90 @@ TEST_CASE( "earth with 6 continents", "[map][continent]" )
 	REQUIRE_NOTHROW( earth->find_continent("Oceania") );
 	REQUIRE_THROWS_AS( earth->find_continent("Antarctica"), std::out_of_range );
 
+}
+
+TEST_CASE( "territory name", "[map][territory]" )
+{
+	risk::map::territory brazil{"Lígia"};
+	REQUIRE( brazil.name() == "Lígia" );
+	REQUIRE_FALSE( brazil.name() == "Brazil" );
+}
+
+TEST_CASE( "territory has empty neighborhood", "[map][territory]" )
+{
+
+	risk::map::territory brazil{"Brazil"};
+	REQUIRE( brazil.num_neighbors() == 0 );
+
+}
+
+TEST_CASE( "add argentina as neighbor of brazil", "[map][territory]" )
+{
+
+	std::shared_ptr<risk::map::territory> brazil(new risk::map::territory{"Brazil"});
+	std::shared_ptr<risk::map::territory> argentina(new risk::map::territory{"Argentina"});
+	brazil->add_neighbor(argentina);
+	argentina->add_neighbor(brazil);
+
+	REQUIRE( brazil->num_neighbors() == 1 );
+	REQUIRE( argentina->num_neighbors() == 1 );
+
+}
+
+
+TEST_CASE( "find neighbor", "[map][territory]" )
+{
+
+	std::shared_ptr<risk::map::territory> brazil(new risk::map::territory{"Brazil"});
+	std::shared_ptr<risk::map::territory> argentina(new risk::map::territory{"Argentina"});
+	brazil->add_neighbor(argentina);
+	argentina->add_neighbor(brazil);
+	
+	REQUIRE_NOTHROW( brazil->find_neighbor("Argentina") );
+	REQUIRE( brazil->find_neighbor("Argentina")->name() == "Argentina" );
+	REQUIRE_THROWS_AS( brazil->find_neighbor("Australia"), std::out_of_range);
+
+}
+
+TEST_CASE( "add territory to continent", "[map][continent][territory]" )
+{
+
+	std::shared_ptr<risk::map::continent> south_america{new risk::map::continent{"South America"}};
+	std::shared_ptr<risk::map::territory> brazil{new risk::map::territory{"Brazil"}};
+
+	south_america->add_territory(brazil);
+
+	REQUIRE( south_america->num_territories() == 1 );
+
+}
+
+
+TEST_CASE( "find a territory in a continent", "[map][continent][territory]" )
+{
+
+	std::shared_ptr<risk::map::continent> south_america{new risk::map::continent{"South America"}};
+	std::shared_ptr<risk::map::territory> brazil{new risk::map::territory{"Brazil"}};
+	south_america->add_territory(brazil);
+
+	REQUIRE_NOTHROW( south_america->find_territory("Brazil") );
+}
+
+TEST_CASE( "don't find a territory in a continent", "[map][continent][territory]" )
+{
+
+	std::shared_ptr<risk::map::continent> south_america{new risk::map::continent{"South America"}};
+	REQUIRE_THROWS_AS( south_america->find_territory("Brazil"), std::out_of_range );
+}
+
+TEST_CASE( "south america", "[map][continent][territory]" )
+{
+	const std::unique_ptr<risk::map::continent> & south_america = risk::map::south_america::instance();
+	REQUIRE( south_america->num_territories() == 4 );
+	REQUIRE_NOTHROW( south_america->find_territory("Brazil") );
+	REQUIRE_NOTHROW( south_america->find_territory("Colombia/Venezuela") );
+	REQUIRE_NOTHROW( south_america->find_territory("Peru/Bolívia/Chile") );
+	REQUIRE_NOTHROW( south_america->find_territory("Argentina/Uruguai") );
+	REQUIRE_THROWS_AS( south_america->find_territory("Cuba"), std::out_of_range );
+	REQUIRE_NOTHROW( south_america->find_territory("Brazil")->find_neighbor("Colombia/Venezuela") );
+	REQUIRE_THROWS_AS(  south_america->find_territory("Brazil")->find_neighbor("Cuba"), std::out_of_range );
 }
