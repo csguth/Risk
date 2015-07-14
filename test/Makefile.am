@@ -5,15 +5,23 @@ AM_CXXFLAGS = -std=c++11 -I$(top_srcdir)/test @AM_CXXFLAGS@
 ###############################################################################
 
 # the program to build (the names of the final binaries)
-bin_PROGRAMS = die_test
+bin_PROGRAMS = run_tests
 
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
 # list of sources for the 'helloWorld' binary
-die_test_SOURCES =    \
-                        die_test.cpp
+run_tests_SOURCES =    \
+						map_test.cpp \
+						player_test.cpp \
+						die_test.cpp \
+                        run_tests.cpp
 
 # the additional libraries needed to link helloWorld
-die_test_LDADD =  $(top_builddir)/src/die/libriskdie.a $(AM_LDFLAGS)
+run_tests_LDADD =  \
+	$(top_builddir)/src/die/libriskdie.a \
+	$(top_builddir)/src/player/libriskplayer.a \
+	$(top_builddir)/src/map/libriskmap.a \
+	$(AM_LDFLAGS)
+
 
 ###############################################################################

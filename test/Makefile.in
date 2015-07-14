@@ -79,7 +79,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
-bin_PROGRAMS = die_test$(EXEEXT)
+bin_PROGRAMS = run_tests$(EXEEXT)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -92,11 +92,13 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_die_test_OBJECTS = die_test.$(OBJEXT)
-die_test_OBJECTS = $(am_die_test_OBJECTS)
+am_run_tests_OBJECTS = map_test.$(OBJEXT) player_test.$(OBJEXT) \
+	die_test.$(OBJEXT) run_tests.$(OBJEXT)
+run_tests_OBJECTS = $(am_run_tests_OBJECTS)
 am__DEPENDENCIES_1 =
-die_test_DEPENDENCIES = $(top_builddir)/src/die/libriskdie.a \
-	$(am__DEPENDENCIES_1)
+run_tests_DEPENDENCIES = $(top_builddir)/src/die/libriskdie.a \
+	$(top_builddir)/src/player/libriskplayer.a \
+	$(top_builddir)/src/map/libriskmap.a $(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -126,8 +128,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(die_test_SOURCES)
-DIST_SOURCES = $(die_test_SOURCES)
+SOURCES = $(run_tests_SOURCES)
+DIST_SOURCES = $(run_tests_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -258,12 +260,20 @@ top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -I$(top_srcdir)/include
 
 # list of sources for the 'helloWorld' binary
-die_test_SOURCES = \
-                        die_test.cpp
+run_tests_SOURCES = \
+						map_test.cpp \
+						player_test.cpp \
+						die_test.cpp \
+                        run_tests.cpp
 
 
 # the additional libraries needed to link helloWorld
-die_test_LDADD = $(top_builddir)/src/die/libriskdie.a $(AM_LDFLAGS)
+run_tests_LDADD = \
+	$(top_builddir)/src/die/libriskdie.a \
+	$(top_builddir)/src/player/libriskplayer.a \
+	$(top_builddir)/src/map/libriskmap.a \
+	$(AM_LDFLAGS)
+
 all: all-am
 
 .SUFFIXES:
@@ -341,9 +351,9 @@ uninstall-binPROGRAMS:
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
 
-die_test$(EXEEXT): $(die_test_OBJECTS) $(die_test_DEPENDENCIES) $(EXTRA_die_test_DEPENDENCIES) 
-	@rm -f die_test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(die_test_OBJECTS) $(die_test_LDADD) $(LIBS)
+run_tests$(EXEEXT): $(run_tests_OBJECTS) $(run_tests_DEPENDENCIES) $(EXTRA_run_tests_DEPENDENCIES) 
+	@rm -f run_tests$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(run_tests_OBJECTS) $(run_tests_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -352,6 +362,9 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/die_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/map_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/player_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/run_tests.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

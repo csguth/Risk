@@ -292,6 +292,8 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = \
 	src/die \
+	src/player \
+	src/map \
 	src \
 	test
 

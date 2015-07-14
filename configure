@@ -3758,7 +3758,7 @@ ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
 
 
 
-ac_config_files="$ac_config_files Makefile src/die/Makefile src/Makefile test/Makefile"
+ac_config_files="$ac_config_files Makefile src/die/Makefile src/player/Makefile src/map/Makefile src/Makefile test/Makefile"
 
 
 # generate the final Makefile etc.
@@ -4506,6 +4506,8 @@ do
     "depfiles") CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "src/die/Makefile") CONFIG_FILES="$CONFIG_FILES src/die/Makefile" ;;
+    "src/player/Makefile") CONFIG_FILES="$CONFIG_FILES src/player/Makefile" ;;
+    "src/map/Makefile") CONFIG_FILES="$CONFIG_FILES src/map/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
 

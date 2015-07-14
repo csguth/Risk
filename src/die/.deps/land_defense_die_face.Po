@@ -1,0 +1,11 @@
+land_defense_die_face.o: land_defense_die_face.cpp \
+ /usr/include/stdc-predef.h land_defense_die_face.h die_face.h \
+ land_attack_die_face.h
+
+/usr/include/stdc-predef.h:
+
+land_defense_die_face.h:
+
+die_face.h:
+
+land_attack_die_face.h:
