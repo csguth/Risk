@@ -15,17 +15,12 @@ libriskmap_adir = $(includedir)/libriskmap
 libriskmap_a_HEADERS =	\
 						territory.h \
 						continent.h \
-						south_america.h \
-						map.h \
-						earth.h
+						map.h
 
 # the sources to add to the library and to add to the source distribution
 libriskmap_a_SOURCES =	\
 						$(libriskmap_a_HEADERS) \
 						territory.cpp \
 						continent.cpp \
-						south_america.cpp \
-						map.cpp \
-						earth.cpp
-						
+						map.cpp 						
 ###############################################################################

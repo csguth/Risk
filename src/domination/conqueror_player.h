@@ -4,12 +4,16 @@
 #include "../player/player.h"
 #include "conquerable_territory.h"
 #include <map>
+#include <memory> 
 
 namespace risk{
 namespace domination{
 
 class conquerable_territory;
-class conqueror_player : public risk::player::player {
+class conqueror_player :
+	public risk::player::player,
+	public std::enable_shared_from_this<conqueror_player>
+{
 	std::map<std::string, std::shared_ptr<conquerable_territory> > territories_;
 public:
 	conqueror_player(const std::string name);
