@@ -23,19 +23,47 @@ TEST_CASE( "conquerable territory starts without player" ,"[domination][map][pla
 	REQUIRE_FALSE( brazil.player() );
 }
 
-TEST_CASE( "player conquest a empty territory" ,"[domination][map][player]")
+TEST_CASE( "player conquest an empty territory" ,"[domination][map][player]")
 {
 	std::shared_ptr<risk::domination::conquerable_territory> brazil{new risk::domination::conquerable_territory{"Brazil"}};
 	std::shared_ptr<risk::domination::conqueror_player> csguth{new risk::domination::conqueror_player{"csguth"}};
 	
+	REQUIRE( brazil->army_size() == 0 );
+
 	csguth->conquest(brazil);
 
 	REQUIRE( csguth->num_territories() == 1);
 	REQUIRE( brazil->player() );
+	REQUIRE( brazil->army_size() >= 1 );
 	REQUIRE_NOTHROW( csguth->territory("Brazil") );
 }
 
-TEST_CASE( "player release a territory" ,"[domination][map][player]")
+TEST_CASE( "add army to conquered territory" ,"[domination][map][player]")
+{
+	std::shared_ptr<risk::domination::conquerable_territory> brazil{new risk::domination::conquerable_territory{"Brazil"}};
+	std::shared_ptr<risk::domination::conqueror_player> csguth{new risk::domination::conqueror_player{"csguth"}};
+	
+
+	csguth->conquest(brazil);
+	brazil->add_army(10);
+
+	REQUIRE( brazil->army_size() == 11 );
+}
+
+TEST_CASE( "conquered territory have at least 1 territory" ,"[domination][map][player]")
+{
+	std::shared_ptr<risk::domination::conquerable_territory> brazil{new risk::domination::conquerable_territory{"Brazil"}};
+	std::shared_ptr<risk::domination::conqueror_player> csguth{new risk::domination::conqueror_player{"csguth"}};
+	
+
+	csguth->conquest(brazil);
+	brazil->add_army(10);
+	brazil->add_army(-30);
+
+	REQUIRE( brazil->army_size() == 1 );
+}
+
+TEST_CASE( "player releases a territory" ,"[domination][map][player]")
 {
 	std::shared_ptr<risk::domination::conquerable_territory> brazil{new risk::domination::conquerable_territory{"Brazil"}};
 	std::shared_ptr<risk::domination::conqueror_player> csguth{new risk::domination::conqueror_player{"csguth"}};

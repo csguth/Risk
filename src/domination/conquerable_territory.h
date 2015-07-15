@@ -15,11 +15,16 @@ class conquerable_territory :
 {
 	friend class conqueror_player;
 	std::shared_ptr<conqueror_player> player_;
+	int army_size_;
+
 	void player(std::shared_ptr<conqueror_player> player);
 public:
 	conquerable_territory(const std::string name);
 	virtual ~conquerable_territory();
-	std::shared_ptr<conqueror_player> player() { return player_; }
+	inline std::shared_ptr<conqueror_player> player() { return player_; }
+	inline int army_size() const { return army_size_; }
+
+	void add_army(int qnt);
 
 };
 

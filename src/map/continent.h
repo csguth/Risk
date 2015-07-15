@@ -29,6 +29,8 @@ public:
 	std::shared_ptr<territory> find_territory(const std::string name) const;
 	void set_map(std::shared_ptr<map> m);
 	void add_territory(std::shared_ptr<territory> territory);
+
+	inline const std::map<std::string, std::shared_ptr<territory> > territories() const { return territories_; }
 };
 
 class continent_has_name
