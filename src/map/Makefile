@@ -129,7 +129,8 @@ libriskmap_a_AR = $(AR) $(ARFLAGS)
 libriskmap_a_LIBADD =
 am__objects_1 =
 am_libriskmap_a_OBJECTS = $(am__objects_1) territory.$(OBJEXT) \
-	continent.$(OBJEXT) map.$(OBJEXT)
+	continent.$(OBJEXT) map_graph.$(OBJEXT) map_parser.$(OBJEXT) \
+	map.$(OBJEXT)
 libriskmap_a_OBJECTS = $(am_libriskmap_a_OBJECTS)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
@@ -317,7 +318,9 @@ libriskmap_adir = $(includedir)/libriskmap
 libriskmap_a_HEADERS = \
 						territory.h \
 						continent.h \
-						map.h
+						map.h \
+						map_graph.h \
+						map_parser.h
 
 
 # the sources to add to the library and to add to the source distribution
@@ -325,7 +328,9 @@ libriskmap_a_SOURCES = \
 						$(libriskmap_a_HEADERS) \
 						territory.cpp \
 						continent.cpp \
-						map.cpp 						
+						map_graph.cpp \
+						map_parser.cpp \
+						map.cpp
 
 all: all-am
 
@@ -406,6 +411,8 @@ distclean-compile:
 
 include ./$(DEPDIR)/continent.Po
 include ./$(DEPDIR)/map.Po
+include ./$(DEPDIR)/map_graph.Po
+include ./$(DEPDIR)/map_parser.Po
 include ./$(DEPDIR)/territory.Po
 
 .cpp.o:
@@ -647,6 +654,7 @@ uninstall-am: uninstall-libLIBRARIES uninstall-libriskmap_aHEADERS
 	mostlyclean-generic pdf pdf-am ps ps-am tags tags-am uninstall \
 	uninstall-am uninstall-libLIBRARIES \
 	uninstall-libriskmap_aHEADERS
+
 
 ###############################################################################
 

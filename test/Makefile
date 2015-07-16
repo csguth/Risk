@@ -94,7 +94,8 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_run_tests_OBJECTS = map_test.$(OBJEXT) player_test.$(OBJEXT) \
 	die_test.$(OBJEXT) domination_test.$(OBJEXT) \
-	bonus_test.$(OBJEXT) run_tests.$(OBJEXT)
+	bonus_test.$(OBJEXT) map_parser_test.$(OBJEXT) \
+	run_tests.$(OBJEXT)
 run_tests_OBJECTS = $(am_run_tests_OBJECTS)
 am__DEPENDENCIES_1 =
 run_tests_DEPENDENCIES = $(top_builddir)/src/die/libriskdie.a \
@@ -269,6 +270,7 @@ run_tests_SOURCES = \
 						die_test.cpp \
 						domination_test.cpp \
 						bonus_test.cpp \
+						map_parser_test.cpp \
                         run_tests.cpp
 
 
@@ -371,6 +373,7 @@ distclean-compile:
 include ./$(DEPDIR)/bonus_test.Po
 include ./$(DEPDIR)/die_test.Po
 include ./$(DEPDIR)/domination_test.Po
+include ./$(DEPDIR)/map_parser_test.Po
 include ./$(DEPDIR)/map_test.Po
 include ./$(DEPDIR)/player_test.Po
 include ./$(DEPDIR)/run_tests.Po

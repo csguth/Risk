@@ -16,6 +16,7 @@ run_tests_SOURCES =    \
 						die_test.cpp \
 						domination_test.cpp \
 						bonus_test.cpp \
+						map_parser_test.cpp \
                         run_tests.cpp
 
 # the additional libraries needed to link helloWorld

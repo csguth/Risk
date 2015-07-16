@@ -1,0 +1,57 @@
+Terra,6
+
+América do Sul,4
+
+Brasil,Colômbia,Chile,Argentina,Nigéria
+Colômbia,México,Brasil,Chile
+Chile,Colômbia,Brasil,Argentina
+Argentina,Chile,Brasil
+
+América do Norte,9
+
+México,Colômbia,Califórnia,Nova York
+Califórnia,México,Nova York,Vancouver,Ottawa
+Nova York,México,Califórnia,Ottawa,Labrador
+Vancouver,Califórnia,Ottawa,Mackenzie,Alaska
+Ottawa,Califórnia,Nova York,Vancouver,Labrador,Mackenzie
+Labrador,Ottawa,Nova York,Groenlândia
+Alaska,Mackenzie,Vancouver,Vladivostok
+Mackenzie,Alaska,Vancouver,Ottawa,Groenlândia
+Groenlândia,Mackenzie,Labrador,Islândia
+
+Europa,7
+Islândia,Inglaterra,Groenlândia
+Inglaterra,Islândia,Espanha,Suécia,Alemanha
+Espanha,Inglaterra,Nigéria,Egito,Alemanha,Polônia
+Alemanha,Inglaterra,Espanha,Polônia
+Suécia,Inglaterra,Moscou
+Polônia,Espanha,Alemanha,Egito,Oriente Médio,Moscou
+Moscou,Suécia,Polôniam,Omsk,Aral,Oriente Médio
+
+Ásia,12
+Dudinka,Omsk,Sibéria,Tchita,Mongólia
+Omsk,Dudinka,Moscow,Aral,Mongólia,China
+Sibéria,Dudinka,Tchita,Vladivostok
+Vladivostok,Sibéria,Tchita,China,Japão,Alaska
+Tchita,Sibéria,Vladivostok,China,Mongólia,Dudinka
+Mongólia,Tchita,China,Omsk,Dudinka
+China,Mongólia,Tchita,Vladivostok,Japão,Vietnã,Índia,Aral,Omsk
+Japão,Vladivostok,China
+Aral,Moscou,Omsk,Oriente Médio,Índia,China
+Oriente Médio,Egito,Polônia,Moscou,Aral,Índia
+Índia,Oriente Médio,Aral,China,Vietnã,Sumatra
+Vietnã,China,Borneo,Índia
+
+Oceania,4
+Borneo,Vietnã,Nova Guiné,Austrália
+Nova Guiné,Austrália,Borneo
+Austrália,Borneo,Nova Guiné,Sumatra
+Sumatra,Índia,Austrália
+
+África,6
+Egito,Polônia,Oriente Médio,Sudão,Nigéria,Espanha
+Sudão,Egito,Madagascar,África do Sul,Congo,Nigéria
+Madagascar,Sudão,África do Sul
+África do Sul,Congo,Sudão,Madagascar
+Congo,Nigéria,Sudão,África do Sul
+Nigéria,Egito,Sudão,Congo,Brasil
