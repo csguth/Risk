@@ -22,13 +22,13 @@ TEST_CASE( "created map with 0 continents", "[map]" )
 
 TEST_CASE( "created continent without map", "[map][continent]" )
 {
-	continent america{"South America"};
+	continent america{"South America", 1};
 	REQUIRE( !america.get_map() );
 }
 
 TEST_CASE( "continent name", "[map][continent]" )
 {
-	continent america{"South America"};
+	continent america{"South America", 1};
 	risk::map::continent_has_name comparator("South America");
 	REQUIRE( america.name() == "South America" );
 	REQUIRE( comparator(america) );
@@ -36,24 +36,33 @@ TEST_CASE( "continent name", "[map][continent]" )
 
 TEST_CASE( "created continent with 0 territories", "[map][continent]" )
 {
-	continent america{"South America"};
+	continent america{"South America", 1};
 	REQUIRE( america.num_territories() == 0 );
 } 
 
 TEST_CASE( "add continent to map", "[map][continent]" )
 {
 	std::shared_ptr<map> earth{new map{"earth"}};
-	std::shared_ptr<continent> america{new continent{"South America"}};
+	std::shared_ptr<continent> america{new continent{"South America", 1}};
 	
 	REQUIRE_NOTHROW( earth->add_continent(america) );
 	REQUIRE( america->get_map() == earth );
 	REQUIRE( earth->num_continents() == 1 );
 }
 
+TEST_CASE( "continent bonus size", "[map][continent]" )
+{
+	std::shared_ptr<continent> america{new continent{"South America", 1}};
+	REQUIRE( america->bonus() == 1 );
+
+	std::shared_ptr<continent> america_do_norte{new continent{"North America", 2}};
+	REQUIRE( america_do_norte->bonus() == 2 );
+}
+
 TEST_CASE( "find continent by name", "[map][continent]" )
 {
 	std::shared_ptr<map> earth{new map{"earth"}};
-	std::shared_ptr<continent> america{new continent{"South America"}};
+	std::shared_ptr<continent> america{new continent{"South America", 1}};
 	
 	earth->add_continent(america);
 	REQUIRE_NOTHROW( earth->find_continent("South America") );
@@ -63,7 +72,7 @@ TEST_CASE( "find continent by name", "[map][continent]" )
 TEST_CASE( "doesn't find continent by name", "[map][continent]" )
 {
 	std::shared_ptr<map> earth{new map{"earth"}};
-	std::shared_ptr<continent> america{new continent{"South America"}};
+	std::shared_ptr<continent> america{new continent{"South America", 1}};
 	
 	earth->add_continent(america);
 	REQUIRE_THROWS_AS( earth->find_continent("Africa"), std::out_of_range );
@@ -116,7 +125,7 @@ TEST_CASE( "find neighbor", "[map][territory]" )
 TEST_CASE( "add territory to continent", "[map][continent][territory]" )
 {
 
-	std::shared_ptr<continent> south_america{new continent{"South America"}};
+	std::shared_ptr<continent> south_america{new continent{"South America", 1}};
 	std::shared_ptr<territory> brazil{new territory{"Brazil"}};
 
 	south_america->add_territory(brazil);
@@ -130,7 +139,7 @@ TEST_CASE( "add territory to continent", "[map][continent][territory]" )
 TEST_CASE( "find a territory in a continent", "[map][continent][territory]" )
 {
 
-	std::shared_ptr<continent> south_america{new continent{"South America"}};
+	std::shared_ptr<continent> south_america{new continent{"South America", 1}};
 	std::shared_ptr<territory> brazil{new territory{"Brazil"}};
 	south_america->add_territory(brazil);
 
@@ -139,13 +148,13 @@ TEST_CASE( "find a territory in a continent", "[map][continent][territory]" )
 
 TEST_CASE( "don't find a territory in a continent", "[map][continent][territory]" )
 {
-	std::shared_ptr<continent> south_america{new continent{"South America"}};
+	std::shared_ptr<continent> south_america{new continent{"South America", 1}};
 	REQUIRE_THROWS_AS( south_america->find_territory("Brazil"), std::out_of_range );
 }
 
 TEST_CASE( "world map test", "[map]")
 {
-	std::shared_ptr<continent> america_do_sul{new continent{"América do Sul"}};
+	std::shared_ptr<continent> america_do_sul{new continent{"América do Sul", 1}};
 
 	std::shared_ptr<territory> brasil{new territory{"Brasil"}};
 	std::shared_ptr<territory> peru{new territory{"Peru/Bolívia/Chile"}};
@@ -165,7 +174,7 @@ TEST_CASE( "world map test", "[map]")
 	america_do_sul->add_territory(colombia);
 	america_do_sul->add_territory(argentina);
 
-	std::shared_ptr<continent> america_do_norte{new continent{"América do Norte"}};
+	std::shared_ptr<continent> america_do_norte{new continent{"América do Norte", 1}};
 
 	std::shared_ptr<territory> mexico{new territory{"México"}};
 	std::shared_ptr<territory> nova_york{new territory{"Nova York"}};
@@ -215,7 +224,7 @@ TEST_CASE( "world map test", "[map]")
 
 
 
-	std::shared_ptr<continent> europa{new continent{"Europa"}};
+	std::shared_ptr<continent> europa{new continent{"Europa", 1}};
 
 	std::shared_ptr<territory> islandia{new territory{"Islândia"}};
 	std::shared_ptr<territory> inglaterra{new territory{"Inglaterra"}};
@@ -255,7 +264,7 @@ TEST_CASE( "world map test", "[map]")
 	europa->add_territory(polonia);
 	europa->add_territory(moscou);
 
-	std::shared_ptr<continent> asia{new continent{"Ásia"}};
+	std::shared_ptr<continent> asia{new continent{"Ásia", 1}};
 
 	std::shared_ptr<territory> omsk{new territory{"Omsk"}};
 	std::shared_ptr<territory> aral{new territory{"Aral"}};
@@ -325,7 +334,7 @@ TEST_CASE( "world map test", "[map]")
 	asia->add_territory(india);
 	asia->add_territory(vietna);
 
-	std::shared_ptr<continent> oceania{new continent{"Oceania"}};
+	std::shared_ptr<continent> oceania{new continent{"Oceania", 1}};
 
 	std::shared_ptr<territory> sumatra{new territory{"Sumatra"}};
 	std::shared_ptr<territory> borneo{new territory{"Borneo"}};
@@ -346,7 +355,7 @@ TEST_CASE( "world map test", "[map]")
 	oceania->add_territory(nova_guine);
 	oceania->add_territory(australia);
 
-	std::shared_ptr<continent> africa{new continent{"África"}};
+	std::shared_ptr<continent> africa{new continent{"África", 1}};
 
 	std::shared_ptr<territory> argelia{new territory{"Argélia/Nigéria"}};
 	std::shared_ptr<territory> egito{new territory{"Egito"}};

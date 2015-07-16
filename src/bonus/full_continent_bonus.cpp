@@ -21,7 +21,7 @@ full_continent_bonus::full_continent_bonus(std::shared_ptr<risk::map::continent>
 		}
 	}
 	if(count == continent_->num_territories())
-		size_ = 2;
+		size_ = continent->bonus();
 }
 
 full_continent_bonus::~full_continent_bonus()

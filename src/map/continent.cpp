@@ -3,8 +3,9 @@
 namespace risk {
 namespace map {
 
-continent::continent(std::string name) :
-	name_(name)
+continent::continent(std::string name, int bonus) :
+	name_(name),
+	bonus_(bonus)
 {
 
 }

@@ -105,7 +105,7 @@ TEST_CASE( "full continent bonus if player doesn't have the full continent", "[b
 	std::shared_ptr<conquerable_territory> argentina{new conquerable_territory{"Argentina"}};
 	std::shared_ptr<conquerable_territory> colombia{new conquerable_territory{"Colômbia"}};
 
-	std::shared_ptr<continent> america_do_sul{new continent{"América do Sul"}};
+	std::shared_ptr<continent> america_do_sul{new continent{"América do Sul", 2}};
 
 	america_do_sul->add_territory(brasil);
 	america_do_sul->add_territory(argentina);
@@ -129,8 +129,10 @@ TEST_CASE( "full continent bonus if player HAS the full continent", "[bonus][rou
 
 	std::shared_ptr<conquerable_territory> argelia{new conquerable_territory{"Argélia/Nigéria"}};
 
-	std::shared_ptr<continent> america_do_sul{new continent{"América do Sul"}};
-	std::shared_ptr<continent> africa{new continent{"África"}};
+	int bonus_size = 2;
+
+	std::shared_ptr<continent> america_do_sul{new continent{"América do Sul", bonus_size}};
+	std::shared_ptr<continent> africa{new continent{"África", 3}};
 
 	africa->add_territory(argelia);
 
@@ -145,10 +147,10 @@ TEST_CASE( "full continent bonus if player HAS the full continent", "[bonus][rou
 	john->conquest(argelia);
 
 	risk::bonus::full_continent_bonus bonus(america_do_sul, john);
-	REQUIRE( bonus.size() == 2 );
+	REQUIRE( bonus.size() == bonus_size );
 
 	REQUIRE_NOTHROW( bonus.apply(brasil) );
-	REQUIRE( bonus.size() == 1 );
+	REQUIRE( bonus.size() == bonus_size-1 );
 	REQUIRE_NOTHROW( bonus.apply( argentina ) );
 	REQUIRE_THROWS_AS (bonus.apply( argelia ), std::out_of_range );
 
@@ -157,7 +159,7 @@ TEST_CASE( "full continent bonus if player HAS the full continent", "[bonus][rou
 	REQUIRE( colombia->army_size() == 1 );
 	REQUIRE( argelia->army_size() == 1 );
 
-	REQUIRE( bonus.size() == 0 );
+	REQUIRE( bonus.size() == bonus_size-2 );
 
 
 
