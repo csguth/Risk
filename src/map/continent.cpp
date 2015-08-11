@@ -1,44 +1,36 @@
+/*
+ * continent.cpp
+ *
+ *  Created on: 11 de ago de 2015
+ *      Author: csguth
+ */
+
 #include "continent.h"
 
 namespace risk {
 namespace map {
 
-continent::continent(std::string name, int bonus) :
-	name_(name),
-	bonus_(bonus)
-{
+const continent continent::null("null continent");
+
+continent::continent(std::string name) :
+				m_name(name) {
 
 }
 
-continent::~continent(){
+continent::~continent() {
 
 }
 
-std::shared_ptr<territory> continent::find_territory(const std::string name) const
-{
-	return territories_.at(name);
+const territory& continent::get_territory(territory::id id) const {
+	if(id >= m_territories.size())
+		return territory::null;
+	return m_territories.at(id);
 }
 
-void continent::set_map(std::shared_ptr<map> m)
-{
-	map_ = m;
+territory::id continent::add_territory(std::string name) {
+	m_territories.push_back(territory(name));
+	return m_territories.size() - 1;
 }
 
-void continent::add_territory(std::shared_ptr<territory> territory)
-{
-	territories_.insert(std::make_pair(territory->name(), territory));
-	territory->set_continent(shared_from_this());
-}
-
-continent_has_name::continent_has_name(const std::string name):
-	name_(name)
-{
-}
-
-bool continent_has_name::operator()(const continent & c) const
-{
-	return c.name() == name_;
-}
-
-}
-}
+} /* namespace map */
+} /* namespace risk */

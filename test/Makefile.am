@@ -11,12 +11,10 @@ AM_CPPFLAGS = -I$(top_srcdir)/include
 
 # list of sources for the 'helloWorld' binary
 run_tests_SOURCES =    \
-						map_test.cpp \
 						player_test.cpp \
 						die_test.cpp \
-						domination_test.cpp \
+						map_test.cpp \
 						bonus_test.cpp \
-						map_parser_test.cpp \
                         run_tests.cpp
 
 # the additional libraries needed to link helloWorld
@@ -24,7 +22,6 @@ run_tests_LDADD =  \
 	$(top_builddir)/src/die/libriskdie.a \
 	$(top_builddir)/src/player/libriskplayer.a \
 	$(top_builddir)/src/map/libriskmap.a \
-	$(top_builddir)/src/domination/libriskdomination.a \
 	$(top_builddir)/src/bonus/libriskbonus.a \
 	$(AM_LDFLAGS)
 

@@ -1,30 +1,40 @@
-#ifndef MAP_MAP_H
-#define MAP_MAP_H
+#ifndef RISK_MAP_MAP_H
+#define RISK_MAP_MAP_H
 
-#include <string>
+#include <vector>
+#include <utility>
 #include <map>
 #include "continent.h"
-#include <memory>
 
 namespace risk {
 namespace map {
 
-class continent;
-class map : public std::enable_shared_from_this<map> {
-	std::string name_;
-	std::map<std::string, std::shared_ptr<continent> > continents_;
+using continent_territory_id = std::pair<continent::id, territory::id>;
+
+class map {
+	std::string m_name;
+	std::vector<continent> m_continents;
+	std::map<continent_territory_id, std::vector<continent_territory_id > > m_connections;
 public:
-	map(const std::string name);
+	map(std::string name);
 	virtual ~map();
 
-	inline const std::string name() const { return name_; }
-	inline const int num_continents() const { return continents_.size(); }
-	void add_continent(std::shared_ptr<continent> continent);
-	std::shared_ptr<continent> find_continent(const std::string name) const;
+	std::string name() const;
+	std::size_t num_continents() const;
+	const continent& get_continent(continent::id id) const;
+	std::size_t num_neighbors(std::pair<continent::id, territory::id> territory) const;
+	const territory& get_neighbor(std::pair<continent::id, territory::id> territory, territory::id id) const;
+
+	continent::id add_continent(std::string name);
+	std::pair<continent::id, territory::id> add_territory(continent::id continent, std::string name);
+	void connect_territories(continent_territory_id u, continent_territory_id v);
+	void add_army(continent_territory_id u);
+
+
 };
 
 }
+
 }
 
-
-#endif /* MAP_MAP_H */
+#endif /*  RISK_MAP_MAP_H */

@@ -92,16 +92,13 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_run_tests_OBJECTS = map_test.$(OBJEXT) player_test.$(OBJEXT) \
-	die_test.$(OBJEXT) domination_test.$(OBJEXT) \
-	bonus_test.$(OBJEXT) map_parser_test.$(OBJEXT) \
-	run_tests.$(OBJEXT)
+am_run_tests_OBJECTS = player_test.$(OBJEXT) die_test.$(OBJEXT) \
+	map_test.$(OBJEXT) bonus_test.$(OBJEXT) run_tests.$(OBJEXT)
 run_tests_OBJECTS = $(am_run_tests_OBJECTS)
 am__DEPENDENCIES_1 =
 run_tests_DEPENDENCIES = $(top_builddir)/src/die/libriskdie.a \
 	$(top_builddir)/src/player/libriskplayer.a \
 	$(top_builddir)/src/map/libriskmap.a \
-	$(top_builddir)/src/domination/libriskdomination.a \
 	$(top_builddir)/src/bonus/libriskbonus.a $(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
@@ -169,7 +166,7 @@ AM_LDFLAGS =
 AUTOCONF = ${SHELL} /home/csguth/workspace/Risk/missing autoconf
 AUTOHEADER = ${SHELL} /home/csguth/workspace/Risk/missing autoheader
 AUTOMAKE = ${SHELL} /home/csguth/workspace/Risk/missing automake-1.14
-AWK = gawk
+AWK = mawk
 CPPFLAGS = 
 CXX = g++
 CXXCPP = g++ -E
@@ -265,12 +262,10 @@ AM_CPPFLAGS = -I$(top_srcdir)/include
 
 # list of sources for the 'helloWorld' binary
 run_tests_SOURCES = \
-						map_test.cpp \
 						player_test.cpp \
 						die_test.cpp \
-						domination_test.cpp \
+						map_test.cpp \
 						bonus_test.cpp \
-						map_parser_test.cpp \
                         run_tests.cpp
 
 
@@ -279,7 +274,6 @@ run_tests_LDADD = \
 	$(top_builddir)/src/die/libriskdie.a \
 	$(top_builddir)/src/player/libriskplayer.a \
 	$(top_builddir)/src/map/libriskmap.a \
-	$(top_builddir)/src/domination/libriskdomination.a \
 	$(top_builddir)/src/bonus/libriskbonus.a \
 	$(AM_LDFLAGS)
 
@@ -372,8 +366,6 @@ distclean-compile:
 
 include ./$(DEPDIR)/bonus_test.Po
 include ./$(DEPDIR)/die_test.Po
-include ./$(DEPDIR)/domination_test.Po
-include ./$(DEPDIR)/map_parser_test.Po
 include ./$(DEPDIR)/map_test.Po
 include ./$(DEPDIR)/player_test.Po
 include ./$(DEPDIR)/run_tests.Po

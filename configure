@@ -3758,7 +3758,7 @@ ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
 
 
 
-ac_config_files="$ac_config_files Makefile src/die/Makefile src/player/Makefile src/map/Makefile src/domination/Makefile src/bonus/Makefile src/Makefile test/Makefile"
+ac_config_files="$ac_config_files Makefile src/bonus/Makefile src/map/Makefile src/die/Makefile src/player/Makefile src/Makefile test/Makefile"
 
 
 # generate the final Makefile etc.
@@ -4505,11 +4505,10 @@ do
   case $ac_config_target in
     "depfiles") CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
+    "src/bonus/Makefile") CONFIG_FILES="$CONFIG_FILES src/bonus/Makefile" ;;
+    "src/map/Makefile") CONFIG_FILES="$CONFIG_FILES src/map/Makefile" ;;
     "src/die/Makefile") CONFIG_FILES="$CONFIG_FILES src/die/Makefile" ;;
     "src/player/Makefile") CONFIG_FILES="$CONFIG_FILES src/player/Makefile" ;;
-    "src/map/Makefile") CONFIG_FILES="$CONFIG_FILES src/map/Makefile" ;;
-    "src/domination/Makefile") CONFIG_FILES="$CONFIG_FILES src/domination/Makefile" ;;
-    "src/bonus/Makefile") CONFIG_FILES="$CONFIG_FILES src/bonus/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
 

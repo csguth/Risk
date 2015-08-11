@@ -198,7 +198,7 @@ AM_LDFLAGS =
 AUTOCONF = ${SHELL} /home/csguth/workspace/Risk/missing autoconf
 AUTOHEADER = ${SHELL} /home/csguth/workspace/Risk/missing autoheader
 AUTOMAKE = ${SHELL} /home/csguth/workspace/Risk/missing automake-1.14
-AWK = gawk
+AWK = mawk
 CPPFLAGS = 
 CXX = g++
 CXXCPP = g++ -E
@@ -291,11 +291,10 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 SUBDIRS = \
+    src/bonus \
+	src/map \
 	src/die \
 	src/player \
-	src/map \
-	src/domination \
-	src/bonus \
 	src \
 	test
 

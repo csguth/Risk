@@ -1,166 +1,83 @@
 #include <catch/catch.hpp>
-#include "../src/domination/conqueror_player.h"
-#include "../src/bonus/round_bonus.h"
-#include "../src/bonus/full_continent_bonus.h"
-#include "../src/map/continent.h"
+#include "../src/bonus/territory_bonus.h"
+#include "../src/bonus/continent_bonus.h"
+#include "../src/bonus/single_appliance_bonus.h"
+#include "../src/bonus/full_continent_bonus_factory.h"
 
-typedef risk::domination::conqueror_player conqueror_player;
-typedef risk::domination::conquerable_territory conquerable_territory;
-typedef risk::map::continent continent;
+using map = risk::map::map;
+using bonus = risk::bonus::bonus;
+using territory_bonus = risk::bonus::territory_bonus;
+using continent_bonus = risk::bonus::continent_bonus;
+using single_appliance_bonus = risk::bonus::single_appliance_bonus;
+using fcb_factory = risk::bonus::full_continent_bonus_factory;
 
-TEST_CASE( "round bonus has size at least = 3", "[bonus][round_bonus]")
+TEST_CASE( "territory bonus" )
 {
-	std::shared_ptr<conqueror_player> john{new conqueror_player{"john"}};
-	risk::bonus::round_bonus bonus(john);
-	REQUIRE( bonus.size() == 3 );
-}
+	map earth("earth");
+	auto america_id = earth.add_continent("america");
+	auto brazil_id = earth.add_territory(america_id, "brazil");
+	auto colombia_id = earth.add_territory(america_id, "colombia");
+	bonus* brazil_bonus = new territory_bonus(earth, brazil_id);
 
-TEST_CASE( "round bonus: player gets half of conquested territories", "[bonus][round_bonus]" )
-{
-	std::shared_ptr<conqueror_player> john{new conqueror_player{"john"}};
-	std::shared_ptr<conqueror_player> alice{new conqueror_player{"alice"}};
+	REQUIRE( !brazil_bonus->apply(earth, colombia_id) );
+	REQUIRE( brazil_bonus->apply(earth, brazil_id) );
 
-	std::shared_ptr<conquerable_territory> brasil{new conquerable_territory{"Brasil"}};
-	std::shared_ptr<conquerable_territory> argelia{new conquerable_territory{"Argélia/Nigéria"}};
-	std::shared_ptr<conquerable_territory> egito{new conquerable_territory{"Egito"}};
-	std::shared_ptr<conquerable_territory> oriente_medio{new conquerable_territory{"Oriente Médio"}};
-	std::shared_ptr<conquerable_territory> japao{new conquerable_territory{"Japão"}};
-	std::shared_ptr<conquerable_territory> china{new conquerable_territory{"China"}};
-	std::shared_ptr<conquerable_territory> vladivostok{new conquerable_territory{"Vladivostok"}};
-	std::shared_ptr<conquerable_territory> alaska{new conquerable_territory{"Alaska"}};
-
-	john->conquest(brasil);
-	john->conquest(argelia);
-	john->conquest(egito);
-	john->conquest(oriente_medio);
-	john->conquest(japao);
-	john->conquest(china);
-	john->conquest(vladivostok);
-	john->conquest(alaska);
-
-	risk::bonus::round_bonus bonus(john);
-	REQUIRE( bonus.size() == 4 );
-
-	alice->conquest(alaska);
-
-	risk::bonus::round_bonus bonus2(john);
-	REQUIRE( bonus2.size() == 3 );
-}
-
-TEST_CASE( "apply round bonus", "[bonus][round_bonus]" )
-{
-	std::shared_ptr<conqueror_player> john{new conqueror_player{"john"}};
-
-	std::shared_ptr<conquerable_territory> brasil{new conquerable_territory{"Brasil"}};
-	std::shared_ptr<conquerable_territory> argelia{new conquerable_territory{"Argélia/Nigéria"}};
-	std::shared_ptr<conquerable_territory> egito{new conquerable_territory{"Egito"}};
-	std::shared_ptr<conquerable_territory> oriente_medio{new conquerable_territory{"Oriente Médio"}};
-	std::shared_ptr<conquerable_territory> japao{new conquerable_territory{"Japão"}};
-	std::shared_ptr<conquerable_territory> china{new conquerable_territory{"China"}};
-	std::shared_ptr<conquerable_territory> vladivostok{new conquerable_territory{"Vladivostok"}};
-	std::shared_ptr<conquerable_territory> alaska{new conquerable_territory{"Alaska"}};
-	std::shared_ptr<conquerable_territory> ottawa{new conquerable_territory{"Ottawa"}};
-
-	john->conquest(brasil);
-	john->conquest(argelia);
-	john->conquest(egito);
-	john->conquest(oriente_medio);
-	john->conquest(japao);
-	john->conquest(china);
-	john->conquest(vladivostok);
-	john->conquest(alaska);
-
-	risk::bonus::round_bonus bonus(john);
-	REQUIRE_THROWS_AS( bonus.apply(ottawa), std::out_of_range );
-	REQUIRE( bonus.size() == 4 );
-
-	REQUIRE( bonus.apply(brasil) );
-	REQUIRE( bonus.size() == 3);
-
-	REQUIRE( brasil->army_size() == 2 );
+	delete brazil_bonus;
 
 }
 
-TEST_CASE( "can't apply round bonus with size = 0", "[bonus][round_bonus]" )
+TEST_CASE( "continent bonus" )
 {
-	std::shared_ptr<conqueror_player> john{new conqueror_player{"john"}};
-	std::shared_ptr<conquerable_territory> brasil{new conquerable_territory{"Brasil"}};
-	john->conquest(brasil);
-	
-	risk::bonus::round_bonus bonus(john);
-	REQUIRE( bonus.size() == 3 );
-	REQUIRE( bonus.apply(brasil) ); // = 3
-	REQUIRE( bonus.apply(brasil) ); // = 2
-	REQUIRE( bonus.apply(brasil) ); // = 1
-	REQUIRE( bonus.size() == 0 );
-	REQUIRE( brasil->army_size() == 4 );
-	REQUIRE( !bonus.apply(brasil) );
-	REQUIRE( brasil->army_size() == 4 );
-}
+	map earth("earth");
+	auto america_id = earth.add_continent("america");
+	auto africa_id = earth.add_continent("africa");
+	auto brazil_id = earth.add_territory(america_id, "brazil");
+	auto colombia_id = earth.add_territory(america_id, "colombia");
+	auto argelia_id = earth.add_territory(africa_id, "argelia");
+	bonus* america_bonus = new continent_bonus(earth, america_id);
 
-TEST_CASE( "full continent bonus if player doesn't have the full continent", "[bonus][round_bonus]" )
-{
-	std::shared_ptr<conqueror_player> john{new conqueror_player{"john"}};
-	std::shared_ptr<conquerable_territory> brasil{new conquerable_territory{"Brasil"}};
-	std::shared_ptr<conquerable_territory> argentina{new conquerable_territory{"Argentina"}};
-	std::shared_ptr<conquerable_territory> colombia{new conquerable_territory{"Colômbia"}};
+	REQUIRE( !america_bonus->apply(earth, argelia_id) );
+	REQUIRE( america_bonus->apply(earth, brazil_id) );
+	REQUIRE( america_bonus->apply(earth, colombia_id) );
 
-	std::shared_ptr<continent> america_do_sul{new continent{"América do Sul", 2}};
-
-	america_do_sul->add_territory(brasil);
-	america_do_sul->add_territory(argentina);
-	america_do_sul->add_territory(colombia);
-
-	john->conquest(brasil);
-	john->conquest(argentina);
-	// john->conquest(colombia);
-
-	risk::bonus::full_continent_bonus bonus(america_do_sul, john);
-	REQUIRE( bonus.size() == 0 );
+	delete america_bonus;
 
 }
 
-TEST_CASE( "full continent bonus if player HAS the full continent", "[bonus][round_bonus]" )
+TEST_CASE( "single appliance bonus" )
 {
-	std::shared_ptr<conqueror_player> john{new conqueror_player{"john"}};
-	std::shared_ptr<conquerable_territory> brasil{new conquerable_territory{"Brasil"}};
-	std::shared_ptr<conquerable_territory> argentina{new conquerable_territory{"Argentina"}};
-	std::shared_ptr<conquerable_territory> colombia{new conquerable_territory{"Colômbia"}};
+	map earth("earth");
+	auto america_id = earth.add_continent("america");
+	auto brazil_id = earth.add_territory(america_id, "brazil");
+	auto colombia_id = earth.add_territory(america_id, "colombia");
 
-	std::shared_ptr<conquerable_territory> argelia{new conquerable_territory{"Argélia/Nigéria"}};
+	bonus* america_bonus = new continent_bonus(earth, america_id);
+	bonus* america1 = new single_appliance_bonus(america_bonus);
 
-	int bonus_size = 2;
+	REQUIRE( america1->apply(earth, brazil_id) );
+	REQUIRE( !america1->apply(earth, brazil_id) );
 
-	std::shared_ptr<continent> america_do_sul{new continent{"América do Sul", bonus_size}};
-	std::shared_ptr<continent> africa{new continent{"África", 3}};
+	delete america_bonus;
+	delete america1;
+}
 
-	africa->add_territory(argelia);
+TEST_CASE( "full continent bonus" )
+{
+	map earth("earth");
+	auto america_id = earth.add_continent("america");
+	auto brazil_id = earth.add_territory(america_id, "brazil");
+	auto colombia_id = earth.add_territory(america_id, "colombia");
 
-	america_do_sul->add_territory(brasil);
-	america_do_sul->add_territory(argentina);
-	america_do_sul->add_territory(colombia);
+	fcb_factory factory(earth, america_id, 3);
+	std::vector<bonus*> fcbs = factory.create();
 
-	john->conquest(brasil);
-	john->conquest(argentina);
-	john->conquest(colombia);
+	REQUIRE( fcbs[0]->apply(earth, brazil_id) );
+	REQUIRE( !fcbs[0]->apply(earth, brazil_id) );
+	REQUIRE( fcbs[1]->apply(earth, brazil_id) );
+	REQUIRE( !fcbs[1]->apply(earth, brazil_id) );
+	REQUIRE( fcbs[2]->apply(earth, brazil_id) );
+	REQUIRE( !fcbs[2]->apply(earth, brazil_id) );
 
-	john->conquest(argelia);
-
-	risk::bonus::full_continent_bonus bonus(america_do_sul, john);
-	REQUIRE( bonus.size() == bonus_size );
-
-	REQUIRE_NOTHROW( bonus.apply(brasil) );
-	REQUIRE( bonus.size() == bonus_size-1 );
-	REQUIRE_NOTHROW( bonus.apply( argentina ) );
-	REQUIRE_THROWS_AS (bonus.apply( argelia ), std::out_of_range );
-
-	REQUIRE( brasil->army_size() == 2 );
-	REQUIRE( argentina->army_size() == 2 );
-	REQUIRE( colombia->army_size() == 1 );
-	REQUIRE( argelia->army_size() == 1 );
-
-	REQUIRE( bonus.size() == bonus_size-2 );
-
-
-
+	for(auto i : fcbs)
+		delete i;
 }

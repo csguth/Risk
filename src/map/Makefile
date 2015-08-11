@@ -15,7 +15,6 @@
 
 
 
-
 am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'
 am__make_running_with_option = \
   case $${target_option-} in \
@@ -82,7 +81,7 @@ host_triplet = x86_64-unknown-linux-gnu
 target_triplet = x86_64-unknown-linux-gnu
 subdir = src/map
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
-	$(top_srcdir)/depcomp $(libriskmap_a_HEADERS)
+	$(top_srcdir)/depcomp
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -117,7 +116,7 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libriskmap_adir)"
+am__installdirs = "$(DESTDIR)$(libdir)"
 LIBRARIES = $(lib_LIBRARIES)
 AR = ar
 ARFLAGS = cru
@@ -127,9 +126,7 @@ am__v_AR_0 = @echo "  AR      " $@;
 am__v_AR_1 = 
 libriskmap_a_AR = $(AR) $(ARFLAGS)
 libriskmap_a_LIBADD =
-am__objects_1 =
-am_libriskmap_a_OBJECTS = $(am__objects_1) territory.$(OBJEXT) \
-	continent.$(OBJEXT) map_graph.$(OBJEXT) map_parser.$(OBJEXT) \
+am_libriskmap_a_OBJECTS = territory.$(OBJEXT) continent.$(OBJEXT) \
 	map.$(OBJEXT)
 libriskmap_a_OBJECTS = $(am_libriskmap_a_OBJECTS)
 AM_V_P = $(am__v_P_$(V))
@@ -161,18 +158,6 @@ AM_V_CXXLD = $(am__v_CXXLD_$(V))
 am__v_CXXLD_ = $(am__v_CXXLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-AM_V_CC = $(am__v_CC_$(V))
-am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))
-am__v_CC_0 = @echo "  CC      " $@;
-am__v_CC_1 = 
-CCLD = $(CC)
-LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-AM_V_CCLD = $(am__v_CCLD_$(V))
-am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
-am__v_CCLD_0 = @echo "  CCLD    " $@;
-am__v_CCLD_1 = 
 SOURCES = $(libriskmap_a_SOURCES)
 DIST_SOURCES = $(libriskmap_a_SOURCES)
 am__can_run_installinfo = \
@@ -180,7 +165,6 @@ am__can_run_installinfo = \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
-HEADERS = $(libriskmap_a_HEADERS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
@@ -211,7 +195,7 @@ AM_LDFLAGS =
 AUTOCONF = ${SHELL} /home/csguth/workspace/Risk/missing autoconf
 AUTOHEADER = ${SHELL} /home/csguth/workspace/Risk/missing autoheader
 AUTOMAKE = ${SHELL} /home/csguth/workspace/Risk/missing automake-1.14
-AWK = gawk
+AWK = mawk
 CPPFLAGS = 
 CXX = g++
 CXXCPP = g++ -E
@@ -314,22 +298,11 @@ lib_LIBRARIES = libriskmap.a
 # where to install the headers on the system
 libriskmap_adir = $(includedir)/libriskmap
 
-# the list of header files that belong to the library (to be installed later)
-libriskmap_a_HEADERS = \
-						territory.h \
-						continent.h \
-						map.h \
-						map_graph.h \
-						map_parser.h
-
-
 # the sources to add to the library and to add to the source distribution
 libriskmap_a_SOURCES = \
 						$(libriskmap_a_HEADERS) \
 						territory.cpp \
 						continent.cpp \
-						map_graph.cpp \
-						map_parser.cpp \
 						map.cpp
 
 all: all-am
@@ -411,8 +384,6 @@ distclean-compile:
 
 include ./$(DEPDIR)/continent.Po
 include ./$(DEPDIR)/map.Po
-include ./$(DEPDIR)/map_graph.Po
-include ./$(DEPDIR)/map_parser.Po
 include ./$(DEPDIR)/territory.Po
 
 .cpp.o:
@@ -428,27 +399,6 @@ include ./$(DEPDIR)/territory.Po
 #	$(AM_V_CXX)source='$<' object='$@' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
-install-libriskmap_aHEADERS: $(libriskmap_a_HEADERS)
-	@$(NORMAL_INSTALL)
-	@list='$(libriskmap_a_HEADERS)'; test -n "$(libriskmap_adir)" || list=; \
-	if test -n "$$list"; then \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(libriskmap_adir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(libriskmap_adir)" || exit 1; \
-	fi; \
-	for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  echo "$$d$$p"; \
-	done | $(am__base_list) | \
-	while read files; do \
-	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(libriskmap_adir)'"; \
-	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(libriskmap_adir)" || exit $$?; \
-	done
-
-uninstall-libriskmap_aHEADERS:
-	@$(NORMAL_UNINSTALL)
-	@list='$(libriskmap_a_HEADERS)'; test -n "$(libriskmap_adir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(libriskmap_adir)'; $(am__uninstall_files_from_dir)
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -534,9 +484,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(LIBRARIES) $(HEADERS)
+all-am: Makefile $(LIBRARIES)
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libriskmap_adir)"; do \
+	for dir in "$(DESTDIR)$(libdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -591,7 +541,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-libriskmap_aHEADERS
+install-data-am:
 
 install-dvi: install-dvi-am
 
@@ -636,7 +586,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-libLIBRARIES uninstall-libriskmap_aHEADERS
+uninstall-am: uninstall-libLIBRARIES
 
 .MAKE: install-am install-strip
 
@@ -646,15 +596,18 @@ uninstall-am: uninstall-libLIBRARIES uninstall-libriskmap_aHEADERS
 	dvi-am html html-am info info-am install install-am \
 	install-data install-data-am install-dvi install-dvi-am \
 	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-libLIBRARIES \
-	install-libriskmap_aHEADERS install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic pdf pdf-am ps ps-am tags tags-am uninstall \
-	uninstall-am uninstall-libLIBRARIES \
-	uninstall-libriskmap_aHEADERS
+	install-info install-info-am install-libLIBRARIES install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic pdf pdf-am ps ps-am \
+	tags tags-am uninstall uninstall-am uninstall-libLIBRARIES
 
+
+# the list of header files that belong to the library (to be installed later)
+						territory.h \
+				 		continent.h \
+						map.h
 
 ###############################################################################
 
