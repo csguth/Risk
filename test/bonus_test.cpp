@@ -51,14 +51,12 @@ TEST_CASE( "single appliance bonus" )
 	auto brazil_id = earth.add_territory(america_id, "brazil");
 	auto colombia_id = earth.add_territory(america_id, "colombia");
 
-	bonus* america_bonus = new continent_bonus(earth, america_id);
-	bonus* america1 = new single_appliance_bonus(america_bonus);
+	bonus* america_single = new single_appliance_bonus(new continent_bonus(earth, america_id));
 
-	REQUIRE( america1->apply(earth, brazil_id) );
-	REQUIRE( !america1->apply(earth, brazil_id) );
+	REQUIRE( america_single->apply(earth, brazil_id) );
+	REQUIRE( !america_single->apply(earth, brazil_id) );
 
-	delete america_bonus;
-	delete america1;
+	delete america_single;
 }
 
 TEST_CASE( "full continent bonus" )
@@ -66,7 +64,6 @@ TEST_CASE( "full continent bonus" )
 	map earth("earth");
 	auto america_id = earth.add_continent("america");
 	auto brazil_id = earth.add_territory(america_id, "brazil");
-	auto colombia_id = earth.add_territory(america_id, "colombia");
 
 	fcb_factory factory(earth, america_id, 3);
 	std::vector<bonus*> fcbs = factory.create();
