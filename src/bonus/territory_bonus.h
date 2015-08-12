@@ -17,8 +17,7 @@ class territory_bonus: public bonus {
     risk::map::map & m_map;
     risk::map::continent_territory_id m_territory;
 public:
-    territory_bonus(risk::map::map & map,
-            risk::map::continent_territory_id territory);
+    territory_bonus(risk::map::map & map, risk::map::continent_territory_id territory);
     virtual ~territory_bonus();
 
     bool apply(risk::map::map& m, risk::map::continent_territory_id territory);

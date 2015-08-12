@@ -25,8 +25,7 @@ public:
 
     virtual territory_state* add_army() = 0;
     virtual territory_state* remove_army() = 0;
-    virtual territory_state* assign_to_player(risk::player::player::id id,
-            std::size_t army_size) = 0;
+    virtual territory_state* assign_to_player(risk::player::player::id id, std::size_t army_size) = 0;
 };
 
 } /* namespace domination */

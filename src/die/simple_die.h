@@ -27,8 +27,7 @@ public:
     }
 
     const T roll() {
-        std::uniform_int_distribution<std::size_t> distribution(0,
-                faces_.size() - 1);
+        std::uniform_int_distribution<std::size_t> distribution(0, faces_.size() - 1);
         std::size_t face_index { distribution(die_random_engine::RANDOM_ENGINE) };
         return faces_.at(face_index);
     }

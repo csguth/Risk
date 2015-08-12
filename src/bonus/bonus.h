@@ -17,8 +17,7 @@ class bonus {
 public:
     virtual ~bonus() {
     }
-    virtual bool apply(risk::map::map& m,
-            risk::map::continent_territory_id territory) = 0;
+    virtual bool apply(risk::map::map& m, risk::map::continent_territory_id territory) = 0;
 };
 
 } /* namespace bonus */

@@ -30,8 +30,7 @@ class land_attack_dice_fight {
     int attacks_;
     int defenses_;
 public:
-    land_attack_dice_fight(land_attack_attack_die & attack_die, int attack_size,
-            land_attack_defense_die & defense, int defense_size);
+    land_attack_dice_fight(land_attack_attack_die & attack_die, int attack_size, land_attack_defense_die & defense, int defense_size);
     virtual ~land_attack_dice_fight();
     inline const int attacks() const {
         return attacks_;

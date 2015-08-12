@@ -24,8 +24,7 @@ public:
     std::size_t army_size() const;
     territory_state* add_army();
     territory_state* remove_army();
-    territory_state* assign_to_player(risk::player::player::id id,
-            std::size_t army_size);
+    territory_state* assign_to_player(risk::player::player::id id, std::size_t army_size);
 };
 
 } /* namespace domination */

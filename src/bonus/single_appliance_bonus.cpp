@@ -17,8 +17,7 @@ single_appliance_bonus::single_appliance_bonus(bonus * the_bonus) :
 single_appliance_bonus::~single_appliance_bonus() {
     delete m_bonus;
 }
-bool single_appliance_bonus::apply(risk::map::map& m,
-        risk::map::continent_territory_id territory) {
+bool single_appliance_bonus::apply(risk::map::map& m, risk::map::continent_territory_id territory) {
     if (m_applied || !m_bonus->apply(m, territory))
         return false;
     m_applied = true;

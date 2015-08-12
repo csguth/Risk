@@ -19,8 +19,7 @@ class full_continent_bonus_factory {
     risk::map::continent::id m_continent;
     int m_size;
 public:
-    full_continent_bonus_factory(risk::map::map& m,
-            risk::map::continent::id continent, int size);
+    full_continent_bonus_factory(risk::map::map& m, risk::map::continent::id continent, int size);
     virtual ~full_continent_bonus_factory();
 
     std::vector<bonus*> create();

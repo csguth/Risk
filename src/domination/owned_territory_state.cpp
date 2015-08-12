@@ -21,14 +21,12 @@ std::size_t owned_territory_state::army_size() const {
     return m_army_size;
 }
 
-owned_territory_state::owned_territory_state(player::player::id player_id,
-        std::size_t army_size) :
+owned_territory_state::owned_territory_state(player::player::id player_id, std::size_t army_size) :
         m_player_id(player_id), m_army_size(army_size) {
 
 }
 
-territory_state* owned_territory_state::assign_to_player(
-        risk::player::player::id id, std::size_t army_size) {
+territory_state* owned_territory_state::assign_to_player(risk::player::player::id id, std::size_t army_size) {
     m_player_id = id;
     m_army_size = army_size;
     return this;

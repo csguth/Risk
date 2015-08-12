@@ -27,8 +27,7 @@ class land_attack_die_fight {
     land_attack_die_fight_result result_;
 
 public:
-    land_attack_die_fight(land_attack_die_face attack,
-            land_defense_die_face defense);
+    land_attack_die_fight(land_attack_die_face attack, land_defense_die_face defense);
     virtual ~land_attack_die_fight();
 
     inline const land_attack_die_face & attack() const {

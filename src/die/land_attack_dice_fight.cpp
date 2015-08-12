@@ -10,9 +10,7 @@
 namespace risk {
 namespace die {
 
-land_attack_dice_fight::land_attack_dice_fight(
-        land_attack_attack_die & attack_die, int attack_size,
-        land_attack_defense_die & defense_die, int defense_size) :
+land_attack_dice_fight::land_attack_dice_fight(land_attack_attack_die & attack_die, int attack_size, land_attack_defense_die & defense_die, int defense_size) :
         attacks_(0), defenses_(0) {
     std::vector<land_attack_die_face> attacks;
     for (int i = 0; i < attack_size; i++)
@@ -22,10 +20,8 @@ land_attack_dice_fight::land_attack_dice_fight(
     for (int i = 0; i < defense_size; i++)
         defenses.push_back(defense_die.roll());
 
-    std::sort(attacks.begin(), attacks.end(),
-            std::greater<land_attack_die_face>());
-    std::sort(defenses.begin(), defenses.end(),
-            std::greater<land_defense_die_face>());
+    std::sort(attacks.begin(), attacks.end(), std::greater<land_attack_die_face>());
+    std::sort(defenses.begin(), defenses.end(), std::greater<land_defense_die_face>());
 
     for (std::size_t i = 0; i < std::min(attacks.size(), defenses.size()); i++)
         fights_.push_back(land_attack_die_fight(attacks.at(i), defenses.at(i)));
