@@ -11,8 +11,7 @@ namespace risk {
 namespace die {
 
 land_attack_defense_die::land_attack_defense_die() :
-	simple_die<land_defense_die_face>({1, 2, 3, 4, 5, 6})
-{
+        simple_die<land_defense_die_face>( { 1, 2, 3, 4, 5, 6 }) {
 
 }
 

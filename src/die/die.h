@@ -13,15 +13,14 @@
 namespace risk {
 namespace die {
 
-template <typename T>
+template<typename T>
 class die {
 protected:
 public:
-	virtual ~die(){}
-	virtual const T roll() = 0;
+    virtual ~die() {
+    }
+    virtual const T roll() = 0;
 };
-
-
 
 } /* namespace die */
 } /* namespace risk */

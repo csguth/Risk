@@ -13,7 +13,7 @@ namespace map {
 const territory territory::null("null territory");
 
 territory::territory(std::string name) :
-		m_name(name) {
+        m_name(name) {
 }
 
 territory::~territory() {

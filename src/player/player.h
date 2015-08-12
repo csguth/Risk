@@ -7,19 +7,20 @@ namespace risk {
 namespace player {
 
 class player {
-	std::string name_;
+    std::string name_;
 public:
-	using id = std::size_t;
-	static const player null;
+    using id = std::size_t;
+    static const player null;
 
-	player(const std::string name);
-	virtual ~player();
+    player(const std::string name);
+    virtual ~player();
 
-	inline const std::string name() const { return name_; }
+    inline const std::string name() const {
+        return name_;
+    }
 };
 
 }
 }
-
 
 #endif /* PLAYER_PLAYER_H */

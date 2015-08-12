@@ -1,19 +1,17 @@
 #include "player.h"
 
-namespace risk{
-namespace player{
+namespace risk {
+namespace player {
 
-	const player player::null("null player");
+const player player::null("null player");
 
-	player::player(const std::string name) :
-		name_(name)
-	{
+player::player(const std::string name) :
+        name_(name) {
 
-	}
+}
 
-	player::~player()
-	{
-		
-	}
+player::~player() {
+
+}
 }
 }

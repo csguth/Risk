@@ -11,15 +11,14 @@ namespace risk {
 namespace die {
 
 land_defense_die_face::land_defense_die_face(die_face_value value) :
-	die_face(value)
-{
+        die_face(value) {
 }
 
 land_defense_die_face::~land_defense_die_face() {
 }
 
 bool land_defense_die_face::wins(const land_attack_die_face& o) const {
-	return (*this) >= o;
+    return (*this) >= o;
 }
 
 } /* namespace die */

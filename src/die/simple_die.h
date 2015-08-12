@@ -15,25 +15,24 @@
 namespace risk {
 namespace die {
 
-template <typename T>
+template<typename T>
 class simple_die: public die<T> {
 protected:
-	const std::vector<T> faces_;
+    const std::vector<T> faces_;
 public:
-	simple_die(const std::vector<T> faces):
-		faces_(faces)
-	{}
-	virtual ~simple_die(){}
+    simple_die(const std::vector<T> faces) :
+            faces_(faces) {
+    }
+    virtual ~simple_die() {
+    }
 
-	const T roll()
-	{
-		std::uniform_int_distribution<std::size_t> distribution(0, faces_.size()-1);
-		std::size_t face_index{distribution(die_random_engine::RANDOM_ENGINE)};
-		return faces_.at(face_index);
-	}
+    const T roll() {
+        std::uniform_int_distribution<std::size_t> distribution(0,
+                faces_.size() - 1);
+        std::size_t face_index { distribution(die_random_engine::RANDOM_ENGINE) };
+        return faces_.at(face_index);
+    }
 };
-
-
 
 } /* namespace die */
 } /* namespace risk */

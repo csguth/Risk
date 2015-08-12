@@ -17,14 +17,15 @@ namespace domination {
 class owned_territory_state;
 class empty_territory_state: public territory_state {
 public:
-	empty_territory_state();
-	virtual ~empty_territory_state();
+    empty_territory_state();
+    virtual ~empty_territory_state();
 
-	player::player::id owner() const;
-	std::size_t army_size() const;
-	territory_state* add_army();
-	territory_state* remove_army();
-	territory_state* assign_to_player(risk::player::player::id id, std::size_t army_size);
+    player::player::id owner() const;
+    std::size_t army_size() const;
+    territory_state* add_army();
+    territory_state* remove_army();
+    territory_state* assign_to_player(risk::player::player::id id,
+            std::size_t army_size);
 };
 
 } /* namespace domination */

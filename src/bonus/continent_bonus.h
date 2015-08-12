@@ -13,13 +13,13 @@
 namespace risk {
 namespace bonus {
 
-class continent_bonus : public bonus{
-	risk::map::map& m_map;
-	risk::map::continent::id m_continent;
+class continent_bonus: public bonus {
+    risk::map::map& m_map;
+    risk::map::continent::id m_continent;
 public:
-	continent_bonus(risk::map::map& m, risk::map::continent::id continent);
-	virtual ~continent_bonus();
-	bool apply(risk::map::map& m, risk::map::continent_territory_id territory);
+    continent_bonus(risk::map::map& m, risk::map::continent::id continent);
+    virtual ~continent_bonus();
+    bool apply(risk::map::map& m, risk::map::continent_territory_id territory);
 
 };
 

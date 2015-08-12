@@ -15,8 +15,8 @@ namespace die {
 
 class die_random_engine {
 public:
-	static std::random_device RANDOM_DEVICE;
-	static std::default_random_engine RANDOM_ENGINE;
+    static std::random_device RANDOM_DEVICE;
+    static std::default_random_engine RANDOM_ENGINE;
 };
 
 } /* namespace die */

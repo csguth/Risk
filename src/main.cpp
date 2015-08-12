@@ -14,7 +14,7 @@
 using namespace std;
 
 int main(void) {
-	risk::die::die_face face{1};
-	cout << "Hello World" << endl; /* prints Hello World */
-	return 0;
+    risk::die::die_face face { 1 };
+    cout << "Hello World" << endl; /* prints Hello World */
+    return 0;
 }

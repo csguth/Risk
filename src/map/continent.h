@@ -15,22 +15,24 @@
 namespace risk {
 namespace map {
 
-
 class continent {
-	std::string m_name;
-	std::vector<territory> m_territories;
+    std::string m_name;
+    std::vector<territory> m_territories;
 
 public:
-	using id = std::size_t;
-	static const continent null;
-	continent(std::string name);
-	virtual ~continent();
+    using id = std::size_t;
+    static const continent null;
+    continent(std::string name);
+    virtual ~continent();
 
-	const std::string& name() const { return m_name; }
-	std::size_t num_territories() const { return m_territories.size(); }
-	const territory& get_territory(territory::id id) const;
-	territory::id add_territory(std::string name);
-
+    const std::string& name() const {
+        return m_name;
+    }
+    std::size_t num_territories() const {
+        return m_territories.size();
+    }
+    const territory& get_territory(territory::id id) const;
+    territory::id add_territory(std::string name);
 
 };
 

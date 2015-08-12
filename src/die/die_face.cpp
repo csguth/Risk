@@ -10,9 +10,8 @@
 namespace risk {
 namespace die {
 
-die_face::die_face(die_face_value value):
-	value_(value)
-{
+die_face::die_face(die_face_value value) :
+        value_(value) {
 
 }
 
@@ -20,31 +19,31 @@ die_face::~die_face() {
 }
 
 bool die_face::operator >(const die_face& o) const {
-	return value_ > o.value_;
+    return value_ > o.value_;
 }
 
 bool die_face::operator ==(const die_face& o) const {
-	return value_ == o.value_;
+    return value_ == o.value_;
 }
 
 bool die_face::operator <(const die_face& o) const {
-	return value_ < o.value_;
+    return value_ < o.value_;
 }
 
 bool die::die_face::operator >=(const die_face& o) const {
-	return value_ >= o.value_;
+    return value_ >= o.value_;
 }
 
 bool die::die_face::operator <=(const die_face& o) const {
-	return value_ <= o.value_;
+    return value_ <= o.value_;
 }
 
 bool die_face::operator !=(const die_face& o) const {
-	return value_ != o.value_;
+    return value_ != o.value_;
 }
 
 bool die_face::wins(const die_face& o) const {
-	return (*this) > o;
+    return (*this) > o;
 }
 
 } /* namespace die */

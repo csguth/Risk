@@ -14,14 +14,16 @@ namespace risk {
 namespace map {
 
 class territory {
-	std::string m_name;
+    std::string m_name;
 public:
-	using id = std::size_t;
-	static const territory null;
+    using id = std::size_t;
+    static const territory null;
 
-	territory(std::string name);
-	virtual ~territory();
-	const std::string & name() const { return m_name; }
+    territory(std::string name);
+    virtual ~territory();
+    const std::string & name() const {
+        return m_name;
+    }
 };
 
 } /* namespace map */

@@ -19,26 +19,26 @@ empty_territory_state::empty_territory_state() {
 empty_territory_state::~empty_territory_state() {
 }
 
-std::size_t empty_territory_state::army_size() const{
-	return static_cast<std::size_t>(0);
+std::size_t empty_territory_state::army_size() const {
+    return static_cast<std::size_t>(0);
 }
 
 player::player::id empty_territory_state::owner() const {
-	return std::numeric_limits<player::player::id>::max();
+    return std::numeric_limits<player::player::id>::max();
 }
 
 territory_state* empty_territory_state::assign_to_player(
-		risk::player::player::id id, std::size_t army_size) {
-	delete this;
-	return new owned_territory_state(id, army_size);
+        risk::player::player::id id, std::size_t army_size) {
+    delete this;
+    return new owned_territory_state(id, army_size);
 }
 
 territory_state* empty_territory_state::add_army() {
-	return this;
+    return this;
 }
 
 territory_state* empty_territory_state::remove_army() {
-	return this;
+    return this;
 }
 
 } /* namespace domination */

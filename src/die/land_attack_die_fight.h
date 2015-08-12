@@ -18,21 +18,28 @@ namespace risk {
 namespace die {
 
 enum class land_attack_die_fight_result {
-	ATTACK, DEFENSE, DEFAULT
+    ATTACK, DEFENSE, DEFAULT
 };
 
 class land_attack_die_fight {
-	land_attack_die_face attack_;
-	land_defense_die_face defense_;
-	land_attack_die_fight_result result_;
+    land_attack_die_face attack_;
+    land_defense_die_face defense_;
+    land_attack_die_fight_result result_;
 
 public:
-	land_attack_die_fight(land_attack_die_face attack, land_defense_die_face defense);
-	virtual ~land_attack_die_fight();
+    land_attack_die_fight(land_attack_die_face attack,
+            land_defense_die_face defense);
+    virtual ~land_attack_die_fight();
 
-	inline const land_attack_die_face & attack() const { return attack_; }
-	inline const land_defense_die_face & defense() const { return defense_; }
-	inline const land_attack_die_fight_result result() const { return result_; }
+    inline const land_attack_die_face & attack() const {
+        return attack_;
+    }
+    inline const land_defense_die_face & defense() const {
+        return defense_;
+    }
+    inline const land_attack_die_fight_result result() const {
+        return result_;
+    }
 };
 
 } /* namespace die */

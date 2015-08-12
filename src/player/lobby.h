@@ -18,19 +18,24 @@ namespace risk {
 namespace player {
 
 class lobby {
-	std::vector<player> m_players;
-	std::set<player::id> m_recycled;
+    std::vector<player> m_players;
+    std::set<player::id> m_recycled;
 public:
-	lobby();
-	virtual ~lobby();
+    lobby();
+    virtual ~lobby();
 
-	player::id register_player(std::string name);
-	bool remove_player(player::id id);
+    player::id register_player(std::string name);
+    bool remove_player(player::id id);
 
-	std::size_t size() const { return m_players.size() - m_recycled.size(); }
-	std::vector<player>::const_iterator begin() const { return m_players.cbegin(); }
-	std::vector<player>::const_iterator end() const { return m_players.end(); }
-
+    std::size_t size() const {
+        return m_players.size() - m_recycled.size();
+    }
+    std::vector<player>::const_iterator begin() const {
+        return m_players.cbegin();
+    }
+    std::vector<player>::const_iterator end() const {
+        return m_players.end();
+    }
 
 };
 

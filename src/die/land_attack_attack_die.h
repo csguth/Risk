@@ -16,8 +16,8 @@ namespace die {
 
 class land_attack_attack_die: public simple_die<land_attack_die_face> {
 public:
-	land_attack_attack_die();
-	virtual ~land_attack_attack_die();
+    land_attack_attack_die();
+    virtual ~land_attack_attack_die();
 };
 
 } /* namespace die */

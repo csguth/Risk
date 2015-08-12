@@ -17,9 +17,9 @@ namespace die {
 class land_attack_die_face;
 class land_defense_die_face: public die_face {
 public:
-	land_defense_die_face(die_face_value value);
-	virtual ~land_defense_die_face();
-	bool wins(const land_attack_die_face & o) const;
+    land_defense_die_face(die_face_value value);
+    virtual ~land_defense_die_face();
+    bool wins(const land_attack_die_face & o) const;
 };
 
 } /* namespace die */

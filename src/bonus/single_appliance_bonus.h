@@ -14,12 +14,12 @@ namespace risk {
 namespace bonus {
 
 class single_appliance_bonus: public bonus {
-	bonus* m_bonus;
-	bool m_applied;
+    bonus* m_bonus;
+    bool m_applied;
 public:
-	single_appliance_bonus(bonus * the_bonus);
-	virtual ~single_appliance_bonus();
-	bool apply(risk::map::map& m, risk::map::continent_territory_id territory);
+    single_appliance_bonus(bonus * the_bonus);
+    virtual ~single_appliance_bonus();
+    bool apply(risk::map::map& m, risk::map::continent_territory_id territory);
 };
 
 } /* namespace bonus */
