@@ -28,7 +28,6 @@ public:
 	continent::id add_continent(std::string name);
 	std::pair<continent::id, territory::id> add_territory(continent::id continent, std::string name);
 	void connect_territories(continent_territory_id u, continent_territory_id v);
-	void add_army(continent_territory_id u);
 
 
 };

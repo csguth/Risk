@@ -93,13 +93,16 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_run_tests_OBJECTS = player_test.$(OBJEXT) die_test.$(OBJEXT) \
-	map_test.$(OBJEXT) bonus_test.$(OBJEXT) run_tests.$(OBJEXT)
+	map_test.$(OBJEXT) bonus_test.$(OBJEXT) \
+	domination_test.$(OBJEXT) run_tests.$(OBJEXT)
 run_tests_OBJECTS = $(am_run_tests_OBJECTS)
 am__DEPENDENCIES_1 =
 run_tests_DEPENDENCIES = $(top_builddir)/src/die/libriskdie.a \
 	$(top_builddir)/src/player/libriskplayer.a \
 	$(top_builddir)/src/map/libriskmap.a \
-	$(top_builddir)/src/bonus/libriskbonus.a $(am__DEPENDENCIES_1)
+	$(top_builddir)/src/bonus/libriskbonus.a \
+	$(top_builddir)/src/domination/libriskdomination.a \
+	$(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -266,6 +269,7 @@ run_tests_SOURCES = \
 						die_test.cpp \
 						map_test.cpp \
 						bonus_test.cpp \
+						domination_test.cpp \
                         run_tests.cpp
 
 
@@ -275,6 +279,7 @@ run_tests_LDADD = \
 	$(top_builddir)/src/player/libriskplayer.a \
 	$(top_builddir)/src/map/libriskmap.a \
 	$(top_builddir)/src/bonus/libriskbonus.a \
+	$(top_builddir)/src/domination/libriskdomination.a \
 	$(AM_LDFLAGS)
 
 all: all-am
@@ -366,6 +371,7 @@ distclean-compile:
 
 include ./$(DEPDIR)/bonus_test.Po
 include ./$(DEPDIR)/die_test.Po
+include ./$(DEPDIR)/domination_test.Po
 include ./$(DEPDIR)/map_test.Po
 include ./$(DEPDIR)/player_test.Po
 include ./$(DEPDIR)/run_tests.Po

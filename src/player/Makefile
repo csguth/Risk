@@ -129,7 +129,8 @@ am__v_AR_1 =
 libriskplayer_a_AR = $(AR) $(ARFLAGS)
 libriskplayer_a_LIBADD =
 am__objects_1 =
-am_libriskplayer_a_OBJECTS = $(am__objects_1) player.$(OBJEXT)
+am_libriskplayer_a_OBJECTS = $(am__objects_1) player.$(OBJEXT) \
+	lobby.$(OBJEXT)
 libriskplayer_a_OBJECTS = $(am_libriskplayer_a_OBJECTS)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
@@ -315,13 +316,15 @@ libriskplayer_adir = $(includedir)/libriskplayer
 
 # the list of header files that belong to the library (to be installed later)
 libriskplayer_a_HEADERS = \
-						player.h
+						player.h \
+						lobby.h
 
 
 # the sources to add to the library and to add to the source distribution
 libriskplayer_a_SOURCES = \
 						$(libriskplayer_a_HEADERS) \
-						player.cpp
+						player.cpp \
+						lobby.cpp
 
 all: all-am
 
@@ -400,6 +403,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/lobby.Po
 include ./$(DEPDIR)/player.Po
 
 .cpp.o:

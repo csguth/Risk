@@ -57,6 +57,3 @@ const territory& map::get_neighbor(
 }
 
 }
-
-void risk::map::map::add_army(continent_territory_id u) {
-}

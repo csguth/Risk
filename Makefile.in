@@ -292,6 +292,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = \
     src/bonus \
+	src/domination \
 	src/map \
 	src/die \
 	src/player \

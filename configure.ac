@@ -21,7 +21,7 @@ AC_LANG([C++])
 AC_SUBST([AM_CXXFLAGS])
 AC_SUBST([AM_LDFLAGS])
 
-AC_CONFIG_FILES(Makefile src/bonus/Makefile src/map/Makefile src/die/Makefile src/player/Makefile src/Makefile test/Makefile)
+AC_CONFIG_FILES(Makefile src/bonus/Makefile src/domination/Makefile src/map/Makefile src/die/Makefile src/player/Makefile src/Makefile test/Makefile)
 
 # generate the final Makefile etc.
 AC_OUTPUT

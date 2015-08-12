@@ -9,6 +9,9 @@ namespace player {
 class player {
 	std::string name_;
 public:
+	using id = std::size_t;
+	static const player null;
+
 	player(const std::string name);
 	virtual ~player();
 

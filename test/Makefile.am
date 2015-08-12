@@ -15,6 +15,7 @@ run_tests_SOURCES =    \
 						die_test.cpp \
 						map_test.cpp \
 						bonus_test.cpp \
+						domination_test.cpp \
                         run_tests.cpp
 
 # the additional libraries needed to link helloWorld
@@ -23,6 +24,7 @@ run_tests_LDADD =  \
 	$(top_builddir)/src/player/libriskplayer.a \
 	$(top_builddir)/src/map/libriskmap.a \
 	$(top_builddir)/src/bonus/libriskbonus.a \
+	$(top_builddir)/src/domination/libriskdomination.a \
 	$(AM_LDFLAGS)
 
 

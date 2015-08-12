@@ -24,7 +24,6 @@ bool territory_bonus::apply(risk::map::map& m,
 		risk::map::continent_territory_id territory) {
 	if(&m_map != &m || m_territory != territory)
 		return false;
-	m.add_army(territory);
 	return true;
 
 }
