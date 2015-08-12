@@ -18,10 +18,11 @@ namespace risk {
 namespace player {
 
 class lobby {
+    const std::size_t c_MAX_SIZE;
     std::vector<player> m_players;
     std::set<player::id> m_recycled;
 public:
-    lobby();
+    lobby(std::size_t size = std::numeric_limits<std::size_t>::max());
     virtual ~lobby();
 
     player::id register_player(std::string name);

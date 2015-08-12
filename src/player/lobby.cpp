@@ -10,13 +10,16 @@
 namespace risk {
 namespace player {
 
-lobby::lobby() {
+lobby::lobby(std::size_t size) :
+        c_MAX_SIZE(size) {
 }
 
 lobby::~lobby() {
 }
 
 player::id lobby::register_player(std::string name) {
+    if(size() == c_MAX_SIZE)
+        return player::null_id();
     if (m_recycled.empty()) {
         m_players.push_back(player(name));
         return m_players.size() - 1;

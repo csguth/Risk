@@ -32,3 +32,32 @@ TEST_CASE( "removing player" )
 	REQUIRE( l.size() == 0 );
 }
 
+TEST_CASE( "lobby with max size = 2" )
+{
+    risk::player::lobby l(static_cast<risk::player::player::id>(2));
+    auto csguth_id = l.register_player("csguth");
+    auto other_id = l.register_player("other");
+    REQUIRE( l.register_player("hola") == risk::player::player::null_id() );
+    REQUIRE( l.size() == static_cast<risk::player::player::id>(2) );
+}
+
+TEST_CASE( "lobby with max size = 0" )
+{
+    risk::player::lobby l(static_cast<risk::player::player::id>(0));
+    REQUIRE( l.register_player("hola") == risk::player::player::null_id() );
+    REQUIRE( l.size() == static_cast<risk::player::player::id>(0) );
+}
+
+TEST_CASE( "lobby with max size = 5" )
+{
+    risk::player::lobby l(static_cast<risk::player::player::id>(5));
+    REQUIRE( l.register_player("1") != risk::player::player::null_id() );
+    REQUIRE( l.register_player("2") != risk::player::player::null_id() );
+    REQUIRE( l.register_player("3") != risk::player::player::null_id() );
+    REQUIRE( l.register_player("4") != risk::player::player::null_id() );
+    REQUIRE( l.register_player("5") != risk::player::player::null_id() );
+    REQUIRE( l.register_player("6") == risk::player::player::null_id() );
+    REQUIRE( l.size() == static_cast<risk::player::player::id>(5) );
+}
+
+

@@ -36,7 +36,7 @@ public:
 
     risk::player::player::id owner(map::continent_territory_id territory_id) const;
 
-    void assign_territory_to_player(risk::player::player::id player_id, risk::map::continent_territory_id territory_id, std::size_t army_size);
+    bool assign_territory_to_player(risk::player::player::id player_id, risk::map::continent_territory_id territory_id, std::size_t army_size);
     bool add_army(risk::map::continent_territory_id territory_id);
     bool remove_army(risk::map::continent_territory_id territory_id);
 

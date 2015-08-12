@@ -27,8 +27,6 @@ owned_territory_state::owned_territory_state(player::player::id player_id, std::
 }
 
 territory_state* owned_territory_state::assign_to_player(risk::player::player::id id, std::size_t army_size) {
-    m_player_id = id;
-    m_army_size = army_size;
     return this;
 }
 
