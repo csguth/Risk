@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++0x -g    CMakeFiles/sample.dir/main.cpp.o CMakeFiles/sample.dir/MainWindow.cpp.o CMakeFiles/sample.dir/QGraphicsViewEc.cpp.o CMakeFiles/sample.dir/sample_automoc.cpp.o  -o CMakeFiles/CMakeRelink.dir/Sample -rdynamic -lQtGui -lQtCore ../lib/libQGVCore.so.0.1.0 -lQtGui -lQtCore -lgvc -lcgraph -lcdt 

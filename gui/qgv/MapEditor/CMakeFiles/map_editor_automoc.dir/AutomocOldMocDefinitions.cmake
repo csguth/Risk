@@ -1,0 +1,1 @@
+set(AM_OLD_COMPILE_SETTINGS "QT_CORE_LIB;QT_DEBUG;QT_GUI_LIB ~~~ /usr/include/qt4;/usr/include/qt4/QtGui;/usr/include/qt4/QtCore;/home/csguth/workspace/Risk/gui/qgv/QGVCore;/home/csguth/workspace/Risk/gui/qgv/MapEditor;/home/csguth/workspace/Risk/gui/qgv/MapEditor/../../../src ~~~  ~~~ FALSE ~~~ ")

@@ -1,0 +1,1 @@
+set(AM_OLD_COMPILE_SETTINGS "QGVCORE_LIB;QT_CORE_LIB;QT_DEBUG;QT_GUI_LIB;QVGCORE_LIB ~~~ /usr/include/qt4;/usr/include/qt4/QtGui;/usr/include/qt4/QtCore;/usr/include/graphviz;/home/csguth/workspace/Risk/gui/qgv/QGVCore;/home/csguth/workspace/Risk/gui/qgv/QGVCore/private ~~~  ~~~ FALSE ~~~ ")
