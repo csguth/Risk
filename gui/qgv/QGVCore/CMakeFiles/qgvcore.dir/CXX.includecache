@@ -156,8 +156,6 @@ QGVNodePrivate.h
 cgraph.h
 -
 
-/home/csguth/workspace/Risk/gui/qgv/QGVCore/qgvcore_automoc.cpp
-
 /usr/include/graphviz/arith.h
 limits.h
 -

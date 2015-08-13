@@ -32,13 +32,35 @@ QGVScene.h
 map/map.h
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/map/map.h
 
+/home/csguth/workspace/Risk/gui/qgv/MapEditor/QGraphicsViewEc.cpp
+QGraphicsViewEc.h
+/home/csguth/workspace/Risk/gui/qgv/MapEditor/QGraphicsViewEc.h
+moc_QGraphicsViewEc.cpp
+/home/csguth/workspace/Risk/gui/qgv/MapEditor/moc_QGraphicsViewEc.cpp
+QWheelEvent
+-
+qmath.h
+-
+
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/QGraphicsViewEc.h
 QGraphicsView
 -
 
+/home/csguth/workspace/Risk/gui/qgv/MapEditor/main.cpp
+MainWindow.h
+/home/csguth/workspace/Risk/gui/qgv/MapEditor/MainWindow.h
+QApplication
+-
+
+/home/csguth/workspace/Risk/gui/qgv/MapEditor/map_editor_automoc.cpp
+
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/moc_MainWindow.cpp
 MainWindow.h
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/MainWindow.h
+
+/home/csguth/workspace/Risk/gui/qgv/MapEditor/moc_QGraphicsViewEc.cpp
+QGraphicsViewEc.h
+/home/csguth/workspace/Risk/gui/qgv/MapEditor/QGraphicsViewEc.h
 
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/ui_MainWindow.h
 QtCore/QVariant
@@ -446,6 +468,14 @@ new
 QtCore/qnamespace.h
 -
 
+/usr/include/qt4/QtCore/qmath.h
+math.h
+-
+QtCore/qglobal.h
+-
+e32math.h
+-
+
 /usr/include/qt4/QtCore/qmetatype.h
 QtCore/qglobal.h
 -
@@ -689,6 +719,10 @@ qtoolbar.h
 /usr/include/qt4/QtGui/QVBoxLayout
 qboxlayout.h
 /usr/include/qt4/QtGui/qboxlayout.h
+
+/usr/include/qt4/QtGui/QWheelEvent
+qevent.h
+/usr/include/qt4/QtGui/qevent.h
 
 /usr/include/qt4/QtGui/QWidget
 qwidget.h
