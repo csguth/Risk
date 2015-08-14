@@ -23,6 +23,14 @@ QGVSubGraph.h
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/QGVSubGraph.h
 QMessageBox
 -
+QDebug
+-
+fstream
+-
+set
+-
+QTextCodec
+-
 
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/MainWindow.h
 QMainWindow
@@ -31,16 +39,6 @@ QGVScene.h
 -
 map/map.h
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/map/map.h
-
-/home/csguth/workspace/Risk/gui/qgv/MapEditor/QGraphicsViewEc.cpp
-QGraphicsViewEc.h
-/home/csguth/workspace/Risk/gui/qgv/MapEditor/QGraphicsViewEc.h
-moc_QGraphicsViewEc.cpp
-/home/csguth/workspace/Risk/gui/qgv/MapEditor/moc_QGraphicsViewEc.cpp
-QWheelEvent
--
-qmath.h
--
 
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/QGraphicsViewEc.h
 QGraphicsView
@@ -52,15 +50,9 @@ MainWindow.h
 QApplication
 -
 
-/home/csguth/workspace/Risk/gui/qgv/MapEditor/map_editor_automoc.cpp
-
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/moc_MainWindow.cpp
 MainWindow.h
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/MainWindow.h
-
-/home/csguth/workspace/Risk/gui/qgv/MapEditor/moc_QGraphicsViewEc.cpp
-QGraphicsViewEc.h
-/home/csguth/workspace/Risk/gui/qgv/MapEditor/QGraphicsViewEc.h
 
 /home/csguth/workspace/Risk/gui/qgv/MapEditor/ui_MainWindow.h
 QtCore/QVariant
@@ -106,6 +98,10 @@ iterator
 list
 -
 
+/usr/include/qt4/QtCore/QDebug
+qdebug.h
+/usr/include/qt4/QtCore/qdebug.h
+
 /usr/include/qt4/QtCore/QPoint
 qpoint.h
 /usr/include/qt4/QtCore/qpoint.h
@@ -113,6 +109,10 @@ qpoint.h
 /usr/include/qt4/QtCore/QPointF
 qpoint.h
 /usr/include/qt4/QtCore/qpoint.h
+
+/usr/include/qt4/QtCore/QTextCodec
+qtextcodec.h
+/usr/include/qt4/QtCore/qtextcodec.h
 
 /usr/include/qt4/QtCore/QVariant
 qvariant.h
@@ -322,6 +322,14 @@ QtCore/qglobal.h
 
 /usr/include/qt4/QtCore/qconfig.h
 
+/usr/include/qt4/QtCore/qcontiguouscache.h
+QtCore/qatomic.h
+-
+limits.h
+-
+new
+-
+
 /usr/include/qt4/QtCore/qcoreapplication.h
 QtCore/qobject.h
 -
@@ -346,6 +354,28 @@ QtCore/qscopedpointer.h
 QtCore/qiodevice.h
 -
 QtCore/qglobal.h
+-
+
+/usr/include/qt4/QtCore/qdebug.h
+QtCore/qalgorithms.h
+-
+QtCore/qhash.h
+-
+QtCore/qlist.h
+-
+QtCore/qmap.h
+-
+QtCore/qpair.h
+-
+QtCore/qtextstream.h
+-
+QtCore/qstring.h
+-
+QtCore/qvector.h
+-
+QtCore/qset.h
+-
+QtCore/qcontiguouscache.h
 -
 
 /usr/include/qt4/QtCore/qeventloop.h
@@ -466,14 +496,6 @@ new
 
 /usr/include/qt4/QtCore/qmargins.h
 QtCore/qnamespace.h
--
-
-/usr/include/qt4/QtCore/qmath.h
-math.h
--
-QtCore/qglobal.h
--
-e32math.h
 -
 
 /usr/include/qt4/QtCore/qmetatype.h
@@ -620,6 +642,28 @@ Qt3Support/q3valuelist.h
 QtCore/qstring.h
 -
 
+/usr/include/qt4/QtCore/qtextcodec.h
+QtCore/qstring.h
+-
+QtCore/qlist.h
+-
+
+/usr/include/qt4/QtCore/qtextstream.h
+QtCore/qiodevice.h
+-
+QtCore/qstring.h
+-
+QtCore/qchar.h
+-
+QtCore/qlocale.h
+-
+QtCore/qscopedpointer.h
+-
+QtCore/qtextcodec.h
+-
+stdio.h
+-
+
 /usr/include/qt4/QtCore/qvariant.h
 QtCore/qatomic.h
 -
@@ -719,10 +763,6 @@ qtoolbar.h
 /usr/include/qt4/QtGui/QVBoxLayout
 qboxlayout.h
 /usr/include/qt4/QtGui/qboxlayout.h
-
-/usr/include/qt4/QtGui/QWheelEvent
-qevent.h
-/usr/include/qt4/QtGui/qevent.h
 
 /usr/include/qt4/QtGui/QWidget
 qwidget.h
@@ -1408,6 +1448,8 @@ vector
 utility
 -
 map
+-
+algorithm
 -
 continent.h
 MapEditor/../../../src/map/continent.h

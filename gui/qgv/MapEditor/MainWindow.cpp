@@ -24,6 +24,35 @@ License along with this library.
 #include "QGVSubGraph.h"
 #include <QMessageBox>
 
+#include <QDebug>
+#include <fstream>
+
+#include <set>
+
+#include <QTextCodec>
+
+
+std::vector<std::string> MainWindow::tokenize(std::string line)
+{
+    line += ",";
+    std::string current_token;
+    std::vector<std::string> tokens;
+    for(auto c: line)
+    {
+        qDebug() << "current token " << current_token.c_str();
+        if(c == ',')
+        {
+            if(!current_token.empty())
+            {
+                tokens.push_back(current_token);
+                current_token.clear();
+            }
+        } else
+            current_token.push_back(c);
+    }
+    return tokens;
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     m_map(nullptr),
@@ -35,26 +64,82 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setScene(_scene);
 
 
-    m_map = new risk::map::map("Earth");
+    QTextCodec *linuxCodec = QTextCodec::codecForName("UTF-8");
+    QTextCodec::setCodecForTr(linuxCodec);
+    QTextCodec::setCodecForCStrings(linuxCodec);
+    QTextCodec::setCodecForLocale(linuxCodec);
 
-    auto south_america = m_map->add_continent("South America");
-    auto brazil = m_map->add_territory(south_america, "Brazil");
-    auto uruguay = m_map->add_territory(south_america, "Uruguay");
-    auto argentina = m_map->add_territory(south_america, "Argentina");
-    auto colombia = m_map->add_territory(south_america, "Colombia");
+    std::ifstream input("../../../maps/Earth.riskmap");
 
-    auto africa = m_map->add_continent("Africa");
-    auto argelia = m_map->add_territory(africa, "Argelia");
+    std::string map_name;
 
-    m_map->connect_territories(brazil, uruguay);
-    m_map->connect_territories(brazil, argentina);
-    m_map->connect_territories(brazil, argelia);
-    m_map->connect_territories(brazil, colombia);
+    std::map<std::string, std::set<std::string> > connections;
+    std::map<std::string, std::set<std::string> > continents;
+
+    if(input.good())
+    {
+        std::string temp;
+        std::vector<std::string> tokens;
+        do {
+            std::getline(input, temp);
+            tokens = tokenize(temp);
+        } while(tokens.empty());
+
+        map_name = tokens[0];
+        int num_continents = std::stoi(tokens[1]);
+        for(int i = 0; i < num_continents; ++i)
+        {
+            do {
+                std::getline(input, temp);
+                tokens = tokenize(temp);
+            } while(tokens.empty());
+
+            std::string current_continent = tokens[0];
+            int num_territories = std::stoi(tokens[1]);
+            for(int j = 0; j < num_territories; ++j)
+            {
+                do {
+                    std::getline(input, temp);
+                    tokens = tokenize(temp);
+                } while(tokens.empty());
+
+                continents[current_continent].insert(tokens[0]);
+                for(std::size_t k = 1; k < tokens.size(); ++k)
+                {
+                    connections[tokens[0]].insert(tokens[k]);
+                }
+            }
+
+        }
 
 
+        qDebug() << temp.c_str();
+    } else
+        qDebug() << "fail";
+
+    m_map = new risk::map::map(map_name);
+
+    std::map<std::string, risk::map::continent_territory_id> name2territory;
+
+    for(auto i : continents)
+    {
+        auto continent = m_map->add_continent(i.first);
+        for(auto territory : i.second)
+            name2territory.insert(std::make_pair(territory, m_map->add_territory(continent, territory)));
+    }
+
+
+    for(auto u : connections)
+    {
+        for(auto v : u.second)
+        {
+            m_map->connect_territories(name2territory.at(u.first), name2territory.at(v));
+        }
+    }
 
     connect(_scene, SIGNAL(nodeContextMenu(QGVNode*)), SLOT(nodeContextMenu(QGVNode*)));
     connect(_scene, SIGNAL(nodeDoubleClick(QGVNode*)), SLOT(nodeDoubleClick(QGVNode*)));
+    connect(ui->graphicsView, SIGNAL(doubleClick(QPointF)), this, SLOT(addNode(QPointF)));
 }
 
 MainWindow::~MainWindow()
@@ -77,34 +162,33 @@ void MainWindow::drawGraph()
     //Configure scene attributes
     _scene->setGraphAttribute("label", m_map->name().c_str());
 
-    _scene->setGraphAttribute("splines", "ortho");
-    _scene->setGraphAttribute("rankdir", "LR");
-    //_scene->setGraphAttribute("concentrate", "true"); //Error !
-    _scene->setGraphAttribute("nodesep", "0.4");
+//    _scene->setGraphAttribute("splines", "curved");
+    //    _scene->setGraphAttribute("rankdir", "LR");
+    //    _scene->setGraphAttribute("concentrate", "true"); //Error !
+//    _scene->setGraphAttribute("nodesep", "0.4");
 
-    _scene->setNodeAttribute("shape", "box");
-    _scene->setNodeAttribute("style", "filled");
-    _scene->setNodeAttribute("fillcolor", "white");
-    _scene->setNodeAttribute("height", "1.2");
-    _scene->setEdgeAttribute("minlen", "3");
-    //_scene->setEdgeAttribute("dir", "both");
+//    _scene->setNodeAttribute("shape", "circle");
+//    _scene->setNodeAttribute("style", "filled");
+//    _scene->setNodeAttribute("fillcolor", "white");
+//    _scene->setNodeAttribute("height", "1.2");
+//    _scene->setEdgeAttribute("minlen", "3");
+//    _scene->setEdgeAttribute("dir", "both");
 
     //Add some nodes
 
-    std::map<risk::map::continent::id, QGVSubGraph*> continents;
     std::map<risk::map::continent_territory_id, QGVNode*> nodes;
     std::map<std::string, QGVNode*> nodes_by_name;
 
+
     for(std::size_t i = 0; i < m_map->num_continents(); ++i)
     {
-        QGVSubGraph *continent = _scene->addSubGraph(QString::fromStdString(m_map->get_continent(i).name()));
-        continent->setAttribute("label", QString::fromStdString(m_map->get_continent(i).name()));
-        continents[i] = continent;
+        auto continent = _scene->addSubGraph(m_map->get_continent(i).name().c_str());
+        continent->setAttribute("label", m_map->get_continent(i).name().c_str());
         for(std::size_t j = 0; j < m_map->get_continent(i).num_territories(); ++j)
         {
             risk::map::continent_territory_id territory = {i, j};
-            nodes[territory] = continent->addNode(QString::fromStdString(m_map->get_continent(i).get_territory(j).name()));
-            nodes_by_name[m_map->get_continent(i).get_territory(j).name()] = nodes[territory];
+            nodes.insert(std::make_pair(territory, continent->addNode(QString::fromStdString(m_map->get_continent(i).get_territory(j).name()))));
+            nodes_by_name.insert(std::make_pair(m_map->get_continent(i).get_territory(j).name(),nodes.at(territory)));
         }
     }
 
@@ -116,7 +200,9 @@ void MainWindow::drawGraph()
             for(std::size_t k = 0; k < m_map->num_neighbors(territory); ++k)
             {
                 auto neighbor = m_map->get_neighbor(territory, k);
-                _scene->addEdge(nodes[territory], nodes_by_name[neighbor.name()]);
+                _scene->addEdge(nodes.at(territory), nodes_by_name.at(neighbor.name()));
+                qDebug() << "last edge added " << m_map->get_continent(territory.first).get_territory(territory.second).name().c_str() << " -> " << neighbor.name().c_str();
+
             }
         }
 
@@ -155,8 +241,24 @@ void MainWindow::drawGraph()
     //Layout scene
     _scene->applyLayout();
 
-    //Fit in view
+    //        Fit in view
     ui->graphicsView->fitInView(_scene->sceneRect(), Qt::KeepAspectRatio);
+}
+
+void MainWindow::addNode(QPointF p)
+{
+    //    _scene->setNodeAttribute("shape", "box");
+    //    _scene->setNodeAttribute("style", "filled");
+    //    _scene->setNodeAttribute("fillcolor", "white");
+    //    _scene->setNodeAttribute("height", "1.2");
+    //    _scene->setEdgeAttribute("minlen", "3");
+
+
+//    auto current = m_map->add_territory(0, "novo");
+
+//    _scene->clear();
+//    drawGraph();
+
 }
 
 void MainWindow::nodeContextMenu(QGVNode *node)
@@ -176,4 +278,9 @@ void MainWindow::nodeContextMenu(QGVNode *node)
 void MainWindow::nodeDoubleClick(QGVNode *node)
 {
     QMessageBox::information(this, tr("Node double clicked"), tr("Node %1").arg(node->label()));
+}
+
+void MainWindow::on_actionFit_to_Screen_triggered()
+{
+    ui->graphicsView->fitInView(_scene->sceneRect(), Qt::KeepAspectRatio);
 }

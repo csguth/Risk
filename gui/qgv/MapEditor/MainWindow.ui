@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>817</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
@@ -44,8 +44,14 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionFit_to_Screen"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionFit_to_Screen">
+   <property name="text">
+    <string>Fit to Screen</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>

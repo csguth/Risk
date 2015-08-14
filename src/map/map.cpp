@@ -36,11 +36,15 @@ const continent& map::get_continent(continent::id id) const {
 }
 
 void map::connect_territories(continent_territory_id u, continent_territory_id v) {
-    m_connections[u].push_back(v);
-    m_connections[v].push_back(u);
+    if(std::find(m_connections[u].begin(), m_connections[u].end(), v) == m_connections[u].end())
+        m_connections[u].push_back(v);
+    if(std::find(m_connections[v].begin(), m_connections[v].end(), u) == m_connections[v].end())
+        m_connections[v].push_back(u);
 }
 
 std::size_t map::num_neighbors(std::pair<continent::id, territory::id> territory) const {
+    if(m_connections.find(territory) == m_connections.end())
+        return static_cast<std::size_t>(0);
     return m_connections.at(territory).size();
 }
 

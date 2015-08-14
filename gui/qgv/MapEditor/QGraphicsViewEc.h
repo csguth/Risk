@@ -32,6 +32,10 @@ public:
 
 protected:
     virtual void wheelEvent(QWheelEvent* event);
+    virtual void mouseDoubleClickEvent(QMouseEvent* event);
+
+signals:
+    void doubleClick(QPointF position);
 };
 
 #endif // QGRAPHICSVIEWEC_H

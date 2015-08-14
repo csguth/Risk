@@ -33,15 +33,20 @@ class MainWindow : public QMainWindow
 
 
     risk::map::map * m_map;
-    
+    std::vector<std::string> tokenize(std::string line);
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void drawGraph();
 
+public slots:
+    void addNode(QPointF p);
+
 private slots:
     void nodeContextMenu(QGVNode* node);
     void nodeDoubleClick(QGVNode* node);
+
+    void on_actionFit_to_Screen_triggered();
 
 private:
     Ui::MainWindow *ui;

@@ -9,8 +9,10 @@ MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o
  /home/csguth/workspace/Risk/gui/qgv/MapEditor/ui_MainWindow.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
+ /usr/include/qt4/QtCore/QDebug
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
+ /usr/include/qt4/QtCore/QTextCodec
  /usr/include/qt4/QtCore/QVariant
  /usr/include/qt4/QtCore/QtGlobal
  /usr/include/qt4/QtCore/qabstractitemmodel.h
@@ -49,9 +51,11 @@ MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o
  /usr/include/qt4/QtCore/qbytearray.h
  /usr/include/qt4/QtCore/qchar.h
  /usr/include/qt4/QtCore/qconfig.h
+ /usr/include/qt4/QtCore/qcontiguouscache.h
  /usr/include/qt4/QtCore/qcoreapplication.h
  /usr/include/qt4/QtCore/qcoreevent.h
  /usr/include/qt4/QtCore/qdatastream.h
+ /usr/include/qt4/QtCore/qdebug.h
  /usr/include/qt4/QtCore/qeventloop.h
  /usr/include/qt4/QtCore/qfeatures.h
  /usr/include/qt4/QtCore/qfile.h
@@ -85,6 +89,8 @@ MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o
  /usr/include/qt4/QtCore/qstringbuilder.h
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
+ /usr/include/qt4/QtCore/qtextcodec.h
+ /usr/include/qt4/QtCore/qtextstream.h
  /usr/include/qt4/QtCore/qvariant.h
  /usr/include/qt4/QtCore/qvector.h
  /usr/include/qt4/QtGui/QAction
@@ -186,6 +192,7 @@ MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o
  /home/csguth/workspace/Risk/gui/qgv/MapEditor/moc_QGraphicsViewEc.cpp
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
+ /usr/include/qt4/QtCore/QDebug
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
  /usr/include/qt4/QtCore/qalgorithms.h
@@ -222,8 +229,10 @@ MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o
  /usr/include/qt4/QtCore/qbytearray.h
  /usr/include/qt4/QtCore/qchar.h
  /usr/include/qt4/QtCore/qconfig.h
+ /usr/include/qt4/QtCore/qcontiguouscache.h
  /usr/include/qt4/QtCore/qcoreevent.h
  /usr/include/qt4/QtCore/qdatastream.h
+ /usr/include/qt4/QtCore/qdebug.h
  /usr/include/qt4/QtCore/qfeatures.h
  /usr/include/qt4/QtCore/qfile.h
  /usr/include/qt4/QtCore/qglobal.h
@@ -233,6 +242,7 @@ MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o
  /usr/include/qt4/QtCore/qline.h
  /usr/include/qt4/QtCore/qlinkedlist.h
  /usr/include/qt4/QtCore/qlist.h
+ /usr/include/qt4/QtCore/qlocale.h
  /usr/include/qt4/QtCore/qmap.h
  /usr/include/qt4/QtCore/qmargins.h
  /usr/include/qt4/QtCore/qmath.h
@@ -255,6 +265,8 @@ MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o
  /usr/include/qt4/QtCore/qstringbuilder.h
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
+ /usr/include/qt4/QtCore/qtextcodec.h
+ /usr/include/qt4/QtCore/qtextstream.h
  /usr/include/qt4/QtCore/qvariant.h
  /usr/include/qt4/QtCore/qvector.h
  /usr/include/qt4/QtGui/QGraphicsView

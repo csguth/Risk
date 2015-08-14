@@ -1,57 +1,54 @@
 Terra,6
-
-América do Sul,4
-
-Brasil,Colômbia,Chile,Argentina,Nigéria
-Colômbia,México,Brasil,Chile
-Chile,Colômbia,Brasil,Argentina
+America do Sul,4
+Brasil,Colombia,Chile,Argentina,Nigeria
+Colombia,Mexico,Brasil,Chile
+Chile,Colombia,Brasil,Argentina
 Argentina,Chile,Brasil
 
-América do Norte,9
-
-México,Colômbia,Califórnia,Nova York
-Califórnia,México,Nova York,Vancouver,Ottawa
-Nova York,México,Califórnia,Ottawa,Labrador
-Vancouver,Califórnia,Ottawa,Mackenzie,Alaska
-Ottawa,Califórnia,Nova York,Vancouver,Labrador,Mackenzie
-Labrador,Ottawa,Nova York,Groenlândia
+America do Norte,9
+Mexico,Colombia,California,Nova York
+California,Mexico,Nova York,Vancouver,Ottawa
+Nova York,Mexico,California,Ottawa,Labrador
+Vancouver,California,Ottawa,Mackenzie,Alaska
+Ottawa,California,Nova York,Vancouver,Labrador,Mackenzie
+Labrador,Ottawa,Nova York,Groenlandia
 Alaska,Mackenzie,Vancouver,Vladivostok
-Mackenzie,Alaska,Vancouver,Ottawa,Groenlândia
-Groenlândia,Mackenzie,Labrador,Islândia
+Mackenzie,Alaska,Vancouver,Ottawa,Groenlandia
+Groenlandia,Mackenzie,Labrador,Islandia
 
 Europa,7
-Islândia,Inglaterra,Groenlândia
-Inglaterra,Islândia,Espanha,Suécia,Alemanha
-Espanha,Inglaterra,Nigéria,Egito,Alemanha,Polônia
-Alemanha,Inglaterra,Espanha,Polônia
-Suécia,Inglaterra,Moscou
-Polônia,Espanha,Alemanha,Egito,Oriente Médio,Moscou
-Moscou,Suécia,Polônia,Omsk,Aral,Oriente Médio
+Islandia,Inglaterra,Groenlandia
+Inglaterra,Islandia,Espanha,Suecia,Alemanha
+Espanha,Inglaterra,Nigeria,Egito,Alemanha,Polonia
+Alemanha,Inglaterra,Espanha,Polonia
+Suecia,Inglaterra,Moscou
+Polonia,Espanha,Alemanha,Egito,Oriente Medio,Moscou
+Moscou,Suecia,Polonia,Omsk,Aral,Oriente Medio
 
-Ásia,12
-Dudinka,Omsk,Sibéria,Tchita,Mongólia
-Omsk,Dudinka,Moscow,Aral,Mongólia,China
-Sibéria,Dudinka,Tchita,Vladivostok
-Vladivostok,Sibéria,Tchita,China,Japão,Alaska
-Tchita,Sibéria,Vladivostok,China,Mongólia,Dudinka
-Mongólia,Tchita,China,Omsk,Dudinka
-China,Mongólia,Tchita,Vladivostok,Japão,Vietnã,Índia,Aral,Omsk
-Japão,Vladivostok,China
-Aral,Moscou,Omsk,Oriente Médio,Índia,China
-Oriente Médio,Egito,Polônia,Moscou,Aral,Índia
-Índia,Oriente Médio,Aral,China,Vietnã,Sumatra
-Vietnã,China,Borneo,Índia
+Asia,12
+Dudinka,Omsk,Siberia,Tchita,Mongolia
+Omsk,Dudinka,Moscou,Aral,Mongolia,China
+Siberia,Dudinka,Tchita,Vladivostok
+Vladivostok,Siberia,Tchita,China,Japao,Alaska
+Tchita,Siberia,Vladivostok,China,Mongolia,Dudinka
+Mongolia,Tchita,China,Omsk,Dudinka
+China,Mongolia,Tchita,Vladivostok,Japao,Vietna,India,Aral,Omsk
+Japao,Vladivostok,China
+Aral,Moscou,Omsk,Oriente Medio,India,China
+Oriente Medio,Egito,Polonia,Moscou,Aral,India
+India,Oriente Medio,Aral,China,Vietna,Sumatra
+Vietna,China,Borneo,India
 
 Oceania,4
-Borneo,Vietnã,Nova Guiné,Austrália
-Nova Guiné,Austrália,Borneo
-Austrália,Borneo,Nova Guiné,Sumatra
-Sumatra,Índia,Austrália
+Borneo,Vietna,Nova Guine,Australia
+Nova Guine,Australia,Borneo
+Australia,Borneo,Nova Guine,Sumatra
+Sumatra,India,Australia
 
-África,6
-Egito,Polônia,Oriente Médio,Sudão,Nigéria,Espanha
-Sudão,Egito,Madagascar,África do Sul,Congo,Nigéria
-Madagascar,Sudão,África do Sul
-África do Sul,Congo,Sudão,Madagascar
-Congo,Nigéria,Sudão,África do Sul
-Nigéria,Egito,Sudão,Congo,Brasil
+Africa,6
+Egito,Polonia,Oriente Medio,Sudao,Nigeria,Espanha
+Sudao,Egito,Madagascar,Africa do Sul,Congo,Nigeria
+Madagascar,Sudao,Africa do Sul
+Africa do Sul,Congo,Sudao,Madagascar
+Congo,Nigeria,Sudao,Africa do Sul
+Nigeria,Egito,Sudao,Congo,Brasil,Espanha

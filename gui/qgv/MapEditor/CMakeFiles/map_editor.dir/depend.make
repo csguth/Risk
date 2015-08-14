@@ -8,8 +8,10 @@ MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: MapEditor/moc_MainWindow.c
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: MapEditor/ui_MainWindow.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/Qt3Support/q3cstring.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/Qt3Support/q3valuelist.h
+MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/QDebug
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/QPoint
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/QPointF
+MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/QTextCodec
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/QVariant
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/QtGlobal
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qabstractitemmodel.h
@@ -48,9 +50,11 @@ MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qb
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qbytearray.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qchar.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qconfig.h
+MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qcontiguouscache.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qcoreapplication.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qcoreevent.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qdatastream.h
+MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qdebug.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qeventloop.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qfeatures.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qfile.h
@@ -84,6 +88,8 @@ MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qs
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qstringbuilder.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qstringlist.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qstringmatcher.h
+MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qtextcodec.h
+MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qtextstream.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qvariant.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtCore/qvector.h
 MapEditor/CMakeFiles/map_editor.dir/MainWindow.cpp.o: /usr/include/qt4/QtGui/QAction
@@ -185,6 +191,7 @@ MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: MapEditor/QGraphicsVi
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: MapEditor/moc_QGraphicsViewEc.cpp
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/Qt3Support/q3cstring.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/Qt3Support/q3valuelist.h
+MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/QDebug
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/QPoint
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/QPointF
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qalgorithms.h
@@ -221,8 +228,10 @@ MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCo
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qbytearray.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qchar.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qconfig.h
+MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qcontiguouscache.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qcoreevent.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qdatastream.h
+MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qdebug.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qfeatures.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qfile.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qglobal.h
@@ -232,6 +241,7 @@ MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCo
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qline.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qlinkedlist.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qlist.h
+MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qlocale.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qmap.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qmargins.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qmath.h
@@ -254,6 +264,8 @@ MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCo
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qstringbuilder.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qstringlist.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qstringmatcher.h
+MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qtextcodec.h
+MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qtextstream.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qvariant.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtCore/qvector.h
 MapEditor/CMakeFiles/map_editor.dir/QGraphicsViewEc.cpp.o: /usr/include/qt4/QtGui/QGraphicsView

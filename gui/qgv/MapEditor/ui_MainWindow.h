@@ -27,6 +27,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionFit_to_Screen;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QGraphicsViewEc *graphicsView;
@@ -39,6 +40,8 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(817, 567);
+        actionFit_to_Screen = new QAction(MainWindow);
+        actionFit_to_Screen->setObjectName(QString::fromUtf8("actionFit_to_Screen"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -55,7 +58,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 817, 21));
+        menuBar->setGeometry(QRect(0, 0, 817, 25));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -63,6 +66,8 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         MainWindow->setStatusBar(statusBar);
+
+        mainToolBar->addAction(actionFit_to_Screen);
 
         retranslateUi(MainWindow);
 
@@ -72,6 +77,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
+        actionFit_to_Screen->setText(QApplication::translate("MainWindow", "Fit to Screen", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

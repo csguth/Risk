@@ -20,6 +20,8 @@ License along with this library.
 #include <QWheelEvent>
 #include <qmath.h>
 
+#include <QDebug>
+
 QGraphicsViewEc::QGraphicsViewEc(QWidget* parent) : QGraphicsView(parent)
 {
     setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
@@ -32,4 +34,10 @@ void QGraphicsViewEc::wheelEvent(QWheelEvent* event)
     qreal factor = transform().scale(scaleFactor, scaleFactor).mapRect(QRectF(0, 0, 1, 1)).width();
     if(0.05 < factor && factor < 10) //Zoom factor limitation
         scale(scaleFactor, scaleFactor);
+}
+
+void QGraphicsViewEc::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    qDebug() << "entrou aqui";
+    emit doubleClick(mapToScene(event->pos()));
 }

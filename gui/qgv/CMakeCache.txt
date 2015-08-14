@@ -788,6 +788,30 @@ QT_WORLDTIMECLOCKPLUGIN_PLUGIN_DEBUG:FILEPATH=QT_WORLDTIMECLOCKPLUGIN_PLUGIN_DEB
 //Path to a library.
 QT_WORLDTIMECLOCKPLUGIN_PLUGIN_RELEASE:FILEPATH=QT_WORLDTIMECLOCKPLUGIN_PLUGIN_RELEASE-NOTFOUND
 
+//The directory containing a CMake configuration file for Qt5Core.
+Qt5Core_DIR:PATH=/home/csguth/Qt/5.4/gcc_64/lib/cmake/Qt5Core
+
+//The directory containing a CMake configuration file for Qt5Gui.
+Qt5Gui_DIR:PATH=/home/csguth/Qt/5.4/gcc_64/lib/cmake/Qt5Gui
+
+//The directory containing a CMake configuration file for Qt5LinguistTools.
+Qt5LinguistTools_DIR:PATH=/home/csguth/Qt/5.4/gcc_64/lib/cmake/Qt5LinguistTools
+
+//The directory containing a CMake configuration file for Qt5Network.
+Qt5Network_DIR:PATH=/home/csguth/Qt/5.4/gcc_64/lib/cmake/Qt5Network
+
+//The directory containing a CMake configuration file for Qt5Sql.
+Qt5Sql_DIR:PATH=/home/csguth/Qt/5.4/gcc_64/lib/cmake/Qt5Sql
+
+//The directory containing a CMake configuration file for Qt5Widgets.
+Qt5Widgets_DIR:PATH=/home/csguth/Qt/5.4/gcc_64/lib/cmake/Qt5Widgets
+
+//The directory containing a CMake configuration file for Qt5XmlPatterns.
+Qt5XmlPatterns_DIR:PATH=/home/csguth/Qt/5.4/gcc_64/lib/cmake/Qt5XmlPatterns
+
+//The directory containing a CMake configuration file for Qt5Xml.
+Qt5Xml_DIR:PATH=/home/csguth/Qt/5.4/gcc_64/lib/cmake/Qt5Xml
+
 //Value Computed by CMake
 qgv_BINARY_DIR:STATIC=/home/csguth/workspace/Risk/gui/qgv
 

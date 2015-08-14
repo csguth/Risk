@@ -197,8 +197,8 @@ Sample/preinstall: Sample/CMakeFiles/sample.dir/preinstall
 # Target rules for target Sample/CMakeFiles/sample.dir
 
 # All Build rule for target.
-Sample/CMakeFiles/sample.dir/all: Sample/CMakeFiles/sample_automoc.dir/all
 Sample/CMakeFiles/sample.dir/all: QGVCore/CMakeFiles/qgvcore.dir/all
+Sample/CMakeFiles/sample.dir/all: Sample/CMakeFiles/sample_automoc.dir/all
 	$(MAKE) -f Sample/CMakeFiles/sample.dir/build.make Sample/CMakeFiles/sample.dir/depend
 	$(MAKE) -f Sample/CMakeFiles/sample.dir/build.make Sample/CMakeFiles/sample.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/csguth/workspace/Risk/gui/qgv/CMakeFiles  18 19 20 21 22
@@ -289,8 +289,8 @@ MapEditor/preinstall: MapEditor/CMakeFiles/map_editor.dir/preinstall
 # Target rules for target MapEditor/CMakeFiles/map_editor.dir
 
 # All Build rule for target.
-MapEditor/CMakeFiles/map_editor.dir/all: QGVCore/CMakeFiles/qgvcore.dir/all
 MapEditor/CMakeFiles/map_editor.dir/all: MapEditor/CMakeFiles/map_editor_automoc.dir/all
+MapEditor/CMakeFiles/map_editor.dir/all: QGVCore/CMakeFiles/qgvcore.dir/all
 	$(MAKE) -f MapEditor/CMakeFiles/map_editor.dir/build.make MapEditor/CMakeFiles/map_editor.dir/depend
 	$(MAKE) -f MapEditor/CMakeFiles/map_editor.dir/build.make MapEditor/CMakeFiles/map_editor.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/csguth/workspace/Risk/gui/qgv/CMakeFiles  1 2 3 4 5
