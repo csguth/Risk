@@ -291,11 +291,12 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = \
-    src/bonus \
-	src/domination \
-	src/map \
+	src/utils \
 	src/die \
+	src/map \
 	src/player \
+	src/domination \
+    src/bonus \
 	src \
 	test
 

@@ -11,32 +11,18 @@ namespace risk {
 namespace player {
 
 lobby::lobby(std::size_t size) :
-        c_MAX_SIZE(size) {
+        m_players(size) {
 }
 
 lobby::~lobby() {
 }
 
 player::id lobby::register_player(std::string name) {
-    if(size() == c_MAX_SIZE)
-        return player::null_id();
-    if (m_recycled.empty()) {
-        m_players.push_back(player(name));
-        return m_players.size() - 1;
-    }
-    auto recycled_id_it = m_recycled.begin();
-    player::id recycled_id = *recycled_id_it;
-    m_players[recycled_id] = player(name);
-    m_recycled.erase(recycled_id_it);
-    return recycled_id;
+    return m_players.insert(player(name));
 }
 
 bool lobby::remove_player(player::id id) {
-    if (id >= m_players.size() || m_recycled.find(id) != m_recycled.end())
-        return false;
-    m_recycled.insert(id);
-    m_players[id] = player::null;
-    return true;
+    return m_players.remove(id);
 }
 
 } /* namespace player */

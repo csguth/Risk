@@ -25,7 +25,7 @@ continent::id map::add_continent(std::string name) {
 
 std::pair<continent::id, territory::id> map::add_territory(continent::id continent, std::string name) {
     if (continent >= m_continents.size())
-        return std::make_pair(std::numeric_limits<continent::id>::max(), std::numeric_limits<territory::id>::max());
+        return std::make_pair(continent::null_id(), territory::null_id());
     return std::make_pair(continent, m_continents.at(continent).add_territory(name));
 }
 
@@ -35,24 +35,19 @@ const continent& map::get_continent(continent::id id) const {
     return m_continents.at(id);
 }
 
+std::pair<std::set<continent_territory_id>::const_iterator, std::set<continent_territory_id>::const_iterator> map::neighbors(std::pair<continent::id, territory::id> territory) const {
+    return {m_connections.at(territory).cbegin(), m_connections.at(territory).cend()};
+}
+
 void map::connect_territories(continent_territory_id u, continent_territory_id v) {
-    if(std::find(m_connections[u].begin(), m_connections[u].end(), v) == m_connections[u].end())
-        m_connections[u].push_back(v);
-    if(std::find(m_connections[v].begin(), m_connections[v].end(), u) == m_connections[v].end())
-        m_connections[v].push_back(u);
+        m_connections[u].insert(v);
+        m_connections[v].insert(u);
 }
 
 std::size_t map::num_neighbors(std::pair<continent::id, territory::id> territory) const {
     if(m_connections.find(territory) == m_connections.end())
         return static_cast<std::size_t>(0);
     return m_connections.at(territory).size();
-}
-
-const territory& map::get_neighbor(std::pair<continent::id, territory::id> territory, territory::id id) const {
-    auto neighbor_id = m_connections.at(territory);
-    if (id >= neighbor_id.size())
-        return territory::null;
-    return m_continents[neighbor_id.at(id).first].get_territory(neighbor_id.at(id).second);
 }
 
 }

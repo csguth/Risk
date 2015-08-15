@@ -14,13 +14,13 @@
 #include <utility>
 #include <set>
 
+#include "../src/utils/storage.h"
+
 namespace risk {
 namespace player {
 
 class lobby {
-    const std::size_t c_MAX_SIZE;
-    std::vector<player> m_players;
-    std::set<player::id> m_recycled;
+    utils::limited_storage<player> m_players;
 public:
     lobby(std::size_t size = std::numeric_limits<std::size_t>::max());
     virtual ~lobby();
@@ -29,12 +29,12 @@ public:
     bool remove_player(player::id id);
 
     std::size_t size() const {
-        return m_players.size() - m_recycled.size();
+        return m_players.size();
     }
-    std::vector<player>::const_iterator begin() const {
-        return m_players.cbegin();
+    utils::limited_storage<player>::iterator begin() const {
+        return m_players.begin();
     }
-    std::vector<player>::const_iterator end() const {
+    utils::limited_storage<player>::iterator end() const {
         return m_players.end();
     }
 

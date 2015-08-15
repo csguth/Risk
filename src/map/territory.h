@@ -18,6 +18,7 @@ class territory {
 public:
     using id = std::size_t;
     static const territory null;
+    static id null_id();
 
     territory(std::string name);
     virtual ~territory();

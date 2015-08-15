@@ -6,25 +6,16 @@ AM_CXXFLAGS = -std=c++11 -I$(top_srcdir)/src @AM_CXXFLAGS@
 ###############################################################################
 
 # the library names to build (note we are building static libs only)
-lib_LIBRARIES = libriskmap.a
+lib_LIBRARIES = libriskutils.a
 
 # where to install the headers on the system
-libriskmap_adir = $(includedir)/libriskmap
+libriskutils_adir = $(includedir)/libriskutils
 
 # the list of header files that belong to the library (to be installed later)
-						territory.h \
-				 		continent.h \
-						map.h
+				 		storage.h
 
 # the sources to add to the library and to add to the source distribution
-libriskmap_a_SOURCES =	\
-						$(libriskmap_a_HEADERS) \
-						territory.cpp \
-						continent.cpp \
-						map.cpp
+libriskutils_a_SOURCES =	\
+						$(libriskutils_a_HEADERS)
 						
-libriskmap_a_LIBADD =  \
-	$(top_builddir)/src/utils/libriskutils.a \
-	$(AM_LDFLAGS)
-
 ###############################################################################

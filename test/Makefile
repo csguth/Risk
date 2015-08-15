@@ -92,12 +92,13 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_run_tests_OBJECTS = player_test.$(OBJEXT) die_test.$(OBJEXT) \
-	map_test.$(OBJEXT) bonus_test.$(OBJEXT) \
+am_run_tests_OBJECTS = storage_test.$(OBJEXT) player_test.$(OBJEXT) \
+	die_test.$(OBJEXT) map_test.$(OBJEXT) bonus_test.$(OBJEXT) \
 	domination_test.$(OBJEXT) run_tests.$(OBJEXT)
 run_tests_OBJECTS = $(am_run_tests_OBJECTS)
 am__DEPENDENCIES_1 =
-run_tests_DEPENDENCIES = $(top_builddir)/src/die/libriskdie.a \
+run_tests_DEPENDENCIES = $(top_builddir)/src/utils/libriskutils.a \
+	$(top_builddir)/src/die/libriskdie.a \
 	$(top_builddir)/src/player/libriskplayer.a \
 	$(top_builddir)/src/map/libriskmap.a \
 	$(top_builddir)/src/bonus/libriskbonus.a \
@@ -265,6 +266,7 @@ AM_CPPFLAGS = -I$(top_srcdir)/include
 
 # list of sources for the 'helloWorld' binary
 run_tests_SOURCES = \
+						storage_test.cpp \
 						player_test.cpp \
 						die_test.cpp \
 						map_test.cpp \
@@ -275,6 +277,7 @@ run_tests_SOURCES = \
 
 # the additional libraries needed to link helloWorld
 run_tests_LDADD = \
+	$(top_builddir)/src/utils/libriskutils.a \
 	$(top_builddir)/src/die/libriskdie.a \
 	$(top_builddir)/src/player/libriskplayer.a \
 	$(top_builddir)/src/map/libriskmap.a \
@@ -375,6 +378,7 @@ include ./$(DEPDIR)/domination_test.Po
 include ./$(DEPDIR)/map_test.Po
 include ./$(DEPDIR)/player_test.Po
 include ./$(DEPDIR)/run_tests.Po
+include ./$(DEPDIR)/storage_test.Po
 
 .cpp.o:
 	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
