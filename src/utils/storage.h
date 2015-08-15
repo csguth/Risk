@@ -18,6 +18,7 @@ template<typename element_type>
 class storage_t {
 public:
     using id_t = std::size_t;
+    using iterator = typename std::vector<element_type>::const_iterator;
     static std::size_t null_id() {
         return std::numeric_limits<id_t>::max();
     }
@@ -27,9 +28,9 @@ public:
     virtual std::size_t size() const = 0;
     virtual std::size_t max_size() const = 0;
     virtual id_t insert(const element_type element) = 0;
-    virtual typename std::vector<element_type>::const_iterator begin() const = 0;
-    virtual typename std::vector<element_type>::const_iterator end() const = 0;
-    virtual typename std::vector<element_type>::const_iterator get(id_t id) const = 0;
+    virtual iterator begin() const = 0;
+    virtual iterator end() const = 0;
+    virtual iterator get(id_t id) const = 0;
     virtual bool remove(id_t id) = 0;
     bool full() const {
         return size() >= max_size();
@@ -46,7 +47,7 @@ class storage: public storage_t<element_type> {
         return (id < m_elements.size()) && m_recycled.find(id) == m_recycled.end();
     }
 public:
-    using iterator = typename std::vector<element_type>::const_iterator;
+    using iterator = typename storage_t<element_type>::iterator;
     static const typename storage_t<element_type>::id_t null_id() {
         return std::numeric_limits<typename storage_t<element_type>::id_t>::max();
     }
@@ -77,13 +78,13 @@ public:
         m_elements.push_back(element);
         return id;
     }
-    virtual typename std::vector<element_type>::const_iterator begin() const {
+    virtual typename storage::iterator begin() const {
         return m_elements.cbegin();
     }
-    virtual typename std::vector<element_type>::const_iterator end() const {
+    virtual iterator end() const {
         return m_elements.cend();
     }
-    virtual typename std::vector<element_type>::const_iterator get(typename storage_t<element_type>::id_t id) const {
+    virtual iterator get(typename storage_t<element_type>::id_t id) const {
         if (!has(id))
             return end();
         auto begin_it = m_elements.cbegin();
@@ -121,13 +122,13 @@ public:
             return m_container.insert(element);
         return storage_t<element_type>::null_id();
     }
-    virtual typename std::vector<element_type>::const_iterator begin() const {
+    virtual iterator begin() const {
         return m_container.begin();
     }
-    virtual typename std::vector<element_type>::const_iterator end() const {
+    virtual iterator end() const {
         return m_container.end();
     }
-    virtual typename std::vector<element_type>::const_iterator get(typename storage_t<element_type>::id_t id) const {
+    virtual iterator get(typename storage_t<element_type>::id_t id) const {
         return m_container.get(id);
     }
     virtual bool remove(typename storage_t<element_type>::id_t id) {
